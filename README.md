@@ -1,6 +1,6 @@
 # 2nd-ML100Days
-
-Day_001: 定義 Mean Squared Error 及 Mean Absolute Error
+   
+Day_001: 定義 Mean Squared Error 及 Mean Absolute Error  
 Day_002: 讀取資料、查看資料
 Day_003: 讀取網頁資料(txt)、txt 轉成 Dataframe、Try-Except
 Day_004: One-Hot Encoder( get_dummies() 函數 )
