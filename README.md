@@ -14,5 +14,5 @@ Day_011: 資料分組離散化( cut() : 等距分組 + np.linspace() 函數 )、
 Day_012: 資料分組離散化( cut() : 等距分組 、 qcut() : 等頻分組 )  
 Day_013: 資料分組離散化( cut() : 等距分組 、 qcut() : 等頻分組 )  
 Day_014: 繪圖排版 subplots   
-Day_015: Heatmap、Gridplot、隨機矩陣( np.random.random : 隨機小數均勻分布；np.random.randn : 常態分布 ) 
+Day_015: Heatmap、Gridplot、隨機矩陣( np.random.random : 隨機小數均勻分布；np.random.randn : 常態分布 )   
 Day_016: 匯出儲存成 csv 檔
