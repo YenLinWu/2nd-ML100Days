@@ -18,5 +18,5 @@ Day_015: Heatmap、Gridplot、隨機矩陣( np.random.random : 隨機小數均�
 Day_016: 匯出儲存成 csv 檔  
 Day_017: 篩選類別型的欄位，將其轉成數值型態欄位( LabelEncoder()、MinMaxScaler() )  
 Day_023: Label Encoder 標籤編碼( LabelEncoder() 函數 ) 及 Mean Encoder 均值編碼( 利用 groupby 函數執行 )  
-Day_024: Counting Encoder 計數編碼 及 Feature Hash 特徵雜湊  
+Day_024: Counting Encoder 計數編碼( 利用 groupby 函數執行 ) 及 Feature Hash 特徵雜湊( hash() 函數 ) 
 
