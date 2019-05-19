@@ -17,6 +17,6 @@ Day_014: 繪圖排版 subplots
 Day_015: Heatmap、Gridplot、隨機矩陣( np.random.random : 隨機小數均勻分布；np.random.randn : 常態分布 )   
 Day_016: 匯出儲存成 csv 檔  
 Day_017: 篩選類別型的欄位，將其轉成數值型態欄位( LabelEncoder()、MinMaxScaler() )  
-Day_023: 均值編碼( 利用 groupby 函數執行 )  
+Day_023: 標籤編碼( LabelEncoder() 函數 ) 及 均值編碼( 利用 groupby 函數執行 )  
 
 
