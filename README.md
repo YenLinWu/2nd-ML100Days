@@ -22,10 +22,10 @@ Day_024: Counting Encoder 計數編碼( 利用 groupby 函數執行 ) 及 Featur
 Day_025: 時間特徵分解( 年、月、日、時、分、秒 ) 及 週期循環特徵( 利用 sin 或 cos 函數執行 )  
 Day_026: 特徵組合( ex: 經緯度座標 )  
 Day_027: 特徵組合( Group by Encoding 群聚編碼 : 合成類別特徵與數值特徵 )  
-Day_028: 特徵篩選  
-         1.相關係數過濾法 : 利用 corr() 
-         2.L1-Embedding(Lasso Regression Embedding) : 利用 Lasso( alpha = ) 函數
-         3.GDBT(梯度提升樹) Embedding
+Day_028: 特徵篩選    
+         1.相關係數過濾法 : 利用 corr()   
+         2.L1-Embedding(Lasso Regression Embedding) : 利用 Lasso( alpha = ) 函數  
+         3.GDBT(梯度提升樹) Embedding  
     
     
     
