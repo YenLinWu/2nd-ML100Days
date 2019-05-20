@@ -20,4 +20,9 @@ Day_017: 篩選類別型的欄位，將其轉成數值型態欄位( LabelEncoder
 Day_023: Label Encoder 標籤編碼( LabelEncoder() 函數 ) 及 Mean Encoder 均值編碼( 利用 groupby 函數執行 )  
 Day_024: Counting Encoder 計數編碼( 利用 groupby 函數執行 ) 及 Feature Hash 特徵雜湊( hash() 函數 )  
 Day_025: 時間特徵分解( 年、月、日、時、分、秒 ) 及 週期循環特徵( 利用 sin 或 cos 函數執行 )  
-
+Day_026: 特徵組合( ex: 經緯度座標 )  
+Day_027: 特徵組合( Group by Encoding 群聚編碼 : 合成類別特徵與數值特徵 )  
+  
+    
+    
+    
