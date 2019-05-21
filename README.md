@@ -26,6 +26,9 @@ Day_028: 特徵篩選
          (1) 相關係數過濾法 : 利用 corr() + list() + pop() 函數   
          (2) L1-Embedding(Lasso Regression Embedding) : 利用 Lasso( alpha = ) 函數  
          (3) GDBT(梯度提升樹) Embedding    
-Day_029: 特徵評估重要性     
+Day_029: 樹狀模型的特徵重要性( estimator.feature_importances_ )  
+Day_030: 分類預測模型的特徵優化( 隨機森林 Random Forset + 葉編碼 Leaf Encoding + Logistic Regression )  
+  
+  
     
     
