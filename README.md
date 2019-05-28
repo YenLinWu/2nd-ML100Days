@@ -28,7 +28,8 @@ Day_028: 特徵篩選
          (3) GDBT(梯度提升樹) Embedding    
 Day_029: 樹狀模型的特徵重要性( estimator.feature_importances_ )  
 Day_030: 分類預測模型的特徵優化( 隨機森林 Random Forset + 葉編碼 Leaf Encoding + Logistic Regression )  
-  
-  
-    
-    
+Day_034: 切分 訓練集/測試集 資料    
+         (1) 資料切分 : train_test_split() 函數   
+         (2) 交叉採樣 : KFold() 函數  
+         註：當樣本不均衡時，須搭配運用的函數 np.where()、np.concatenate()  
+
