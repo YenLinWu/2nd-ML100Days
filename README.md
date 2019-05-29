@@ -34,6 +34,14 @@ Day_034: 切分 訓練集/測試集 資料
          (2) 交叉採樣 : KFold( n_splits = ,shuffle = False ) 函數   
          ＊＊ n_splits 為等份數；shuffle = False 表示每次劃分的結果相同  
          註：當樣本不均衡時，須搭配運用的函數 np.where()、np.concatenate()  
+
+Day_035: 模型的選擇 by 預測類型  
+         (1) 迴歸問題：預測的目標為實數  
+         (2) 分類問題：預測的目標為類別  
+         (3) 二元分類(binary-class): 瑕疵 vs 正常、
+         (4) 多元分類(multi-class): 手寫辨識1~9 ；    
+         (5) 多標籤(multi-label): 如天氣預測多雲時晴  
+         (6) 迴歸問題可轉化成分類問題
   
 Day_036: 模型的評估指標  
          (1) 預測值：MAE(Mean Absolute Error)、MSE(Mean Square Error)、R-Square  
