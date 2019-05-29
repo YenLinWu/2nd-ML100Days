@@ -33,4 +33,9 @@ Day_034: 切分 訓練集/測試集 資料
          (2) 交叉採樣 : KFold( n_splits = ,shuffle = False ) 函數   
          ＊＊ n_splits 為等份數；shuffle = False 表示每次劃分的結果相同  
          註：當樣本不均衡時，須搭配運用的函數 np.where()、np.concatenate()  
+Day_036: 模型的評估指標  
+         (1) 預測值：MAE(Mean Absolute Error)、MSE(Mean Square Error)、R-Square  
+         (2) 分類：AUC(Area Under Curve)、Precision、Recall、F1-Score  
+Day_037: 線性迴歸(Linear Regression) v.s. 邏輯斯迴歸(Logistic Regression)  
+Day_038: 線性迴歸 ＆ 邏輯斯迴歸 - 程式碼  
 
