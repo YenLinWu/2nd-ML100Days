@@ -51,11 +51,10 @@ Day_037: 線性迴歸(Linear Regression) v.s. 邏輯斯迴歸(Logistic Regressio
 Day_038: 線性迴歸 ＆ 邏輯斯迴歸 - 程式碼    
   
 Day_039: Lasso & Ridge Regression  
-         (1) 正則化(Regularization):避免模型過擬合(over-fitting)  
-         (1) 正則化方法：Lasso(L1)、Ridge Regression(L2)   
-         (2) Ridge Regression : L2  
-         解決資料因存有多重共線性，而導致模型結果不穩定  
-         alpha的選擇:將交叉驗證(cross-validation)置入 Ridge Regression 中。
-         
+         (1) 正則化(Regularization): 避免模型過擬合(over-fitting)  
+         (2) 正則化方法：Lasso(L1)、Ridge Regression(L2)   
+
+
+
   
 
