@@ -57,7 +57,7 @@ Day_039: Lasso & Ridge Regression
          (1) 正則化(Regularization): 避免模型過擬合(over-fitting)  
          (2) 正則化方法：Lasso(L1)、Ridge Regression(L2)   
 
-Day_040: Lasso & Ridge Regression - 程式碼 
+Day_040: Lasso & Ridge Regression - 程式碼     
          from sklearn import linear_model  
          (1) Lasso = linear_model.Lasso( alpha =  )  
          (2) Ridge = linear_model.Ridge( alpha =  )  
