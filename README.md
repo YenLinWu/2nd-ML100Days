@@ -49,7 +49,7 @@ Day_036: 模型的評估指標
   
 Day_037: 線性迴歸(Linear Regression) v.s. 邏輯斯迴歸(Logistic Regression)  
 Day_038: 線性迴歸 ＆ 邏輯斯迴歸 - 程式碼    
-         from sklearn import linear_model
+         from sklearn import linear_model  
          (1) 線性：Linear = linear_model.LinearRegression( )  
          (2) 邏輯斯：Logistic = linear_model.LogisticRegression( )   
          
@@ -58,7 +58,7 @@ Day_039: Lasso & Ridge Regression
          (2) 正則化方法：Lasso(L1)、Ridge Regression(L2)   
 
 Day_040: Lasso & Ridge Regression - 程式碼 
-         from sklearn import linear_model
+         from sklearn import linear_model  
          (1) Lasso = linear_model.Lasso( alpha =  )  
          (2) Ridge = linear_model.Ridge( alpha =  )  
 
