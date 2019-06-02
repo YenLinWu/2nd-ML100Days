@@ -70,3 +70,8 @@ Day_042: 決策樹(Decision Tree) - 程式碼
   
 Day_043: 隨機森林(Random Forest)        
 Day_044: 隨機森林(Random Forest) - 程式碼   
+         from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor    
+         (1) 迴歸問題： RFR = RandomForestRegressor( )  
+         (2) 分類問題： RFC = RandomForestClassifier( ) 
+         
+         
