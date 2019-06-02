@@ -61,6 +61,12 @@ Day_040: Lasso & Ridge Regression - 程式碼
          from sklearn import linear_model  
          (1) Lasso = linear_model.Lasso( alpha =  )  
          (2) Ridge = linear_model.Ridge( alpha =  )  
-
   
-
+Day_041: 決策樹(Decision Tree)     
+Day_042: 決策樹(Decision Tree) - 程式碼     
+         from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor    
+         (1) 迴歸問題： DTR = DecisionTreeRegressor( )  
+         (2) 分類問題： DTC = DecisionTreeClassifier( )  
+  
+Day_043: 隨機森林(Random Forest)        
+Day_044: 隨機森林(Random Forest) - 程式碼   
