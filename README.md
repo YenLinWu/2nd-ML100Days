@@ -68,10 +68,16 @@ Day_042: 決策樹(Decision Tree) - 程式碼
          (1) 迴歸問題： DTR = DecisionTreeRegressor( )  
          (2) 分類問題： DTC = DecisionTreeClassifier( )  
   
+   
+集成學習(Ensemble Learning): 可避免當決策樹足夠深時，容易導致過擬合(overfitting)的缺點   
+(i) Bagging 從原資料集中隨機做取後放回的採樣，分別在採樣的子集訓練模型 - 隨機森林(Random Forest)   
+(ii) Boosting 透過迭代訓練一系列的模型，下一個模型補強前一個模型的不足，每個模型的訓練樣本分佈由前一個模型的結果產生 - 梯度提升決策數(Gradient Boosting Decision Tree)
+
 Day_043: 隨機森林(Random Forest)        
 Day_044: 隨機森林(Random Forest) - 程式碼   
          from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor    
          (1) 迴歸問題： RFR = RandomForestRegressor( )  
          (2) 分類問題： RFC = RandomForestClassifier( ) 
          
+Day_045: 梯度提升機(Grandient Boosting Machine)       
          
