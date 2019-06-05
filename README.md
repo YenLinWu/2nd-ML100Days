@@ -85,5 +85,10 @@ Day_046: 梯度提升機(Grandient Boosting Machine) - 程式碼
          (1) 迴歸問題： RFR = GradientBoostingRegressor( )  
          (2) 分類問題： RFC = GradientBoostingClassifie( ) 
                   
-                  
+Day_047: 參數調整(Fine-Tuning)  
+         from sklearn.model_selection import GridSearchCV, RandomizedSearchCV  
+         (1) 網格搜尋(Grid Search)：GridSearchCV( )  
+         (2) 隨機搜尋(Random Search)：RandomizedSearchCV( )    
+         
+         
                   
