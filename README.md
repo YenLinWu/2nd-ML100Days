@@ -97,7 +97,7 @@ Day_049: 混合泛化(Blending)
 註：於分類問題中，若我們想得到 lebal = 1 的預測機率，則可用 .predict_proba( data )[ :, 1 ]  得到機率值！！  
   
          
-Day_049: 堆疊泛化(Stacking)  
+Day_0: 堆疊泛化(Stacking)  
          不僅將多個/多種不同模型結合，且使用每個模型的預測值，作為新的特徵值。  
          
          
