@@ -90,5 +90,11 @@ Day_047: 參數調整(Fine-Tuning)
          (1) 網格搜尋(Grid Search)：GridSearchCV( )  
          (2) 隨機搜尋(Random Search)：RandomizedSearchCV( )    
          
-         
-                  
+Day_049: 混合泛化(Blending)  
+         對於相同的訓練集資料，結合多個/多種不同的分類模型，將每個模型的預測值加權合成，得出新的預測結果。  
+         若每個模型的權重相同，則亦稱投票泛化(Voting)。  
+  
+註：於分類問題中，若我們想得到 lebal = 1 的預測機率，則可用 .predict_proba( data )[ :, 1 ]  得到機率值！！  
+  
+  
+  
