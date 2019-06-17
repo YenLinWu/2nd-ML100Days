@@ -82,8 +82,8 @@ Day_044: 隨機森林(Random Forest) - 程式碼
 Day_045: 梯度提升機(Grandient Boosting Machine)       
 Day_046: 梯度提升機(Grandient Boosting Machine) - 程式碼   
          from sklearn.ensemble import GradientBoostingClassifier, GradientBoostingRegressor   
-         (1) 迴歸問題： RFR = GradientBoostingRegressor( )  
-         (2) 分類問題： RFC = GradientBoostingClassifie( ) 
+         (1) 迴歸問題： GBR = GradientBoostingRegressor( )  
+         (2) 分類問題： GBC = GradientBoostingClassifie( ) 
                   
 Day_047: 參數調整(Fine-Tuning)  
          from sklearn.model_selection import GridSearchCV, RandomizedSearchCV  
