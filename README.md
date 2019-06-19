@@ -105,7 +105,7 @@ Day_50: 堆疊泛化(Stacking)
 Day_55: K-Mean  
         將資料分成 k 個群簇(cluster)，使得在同一群簇中的資料彼此盡量相近，且不同群簇的資料盡量不同。  
         
-Day_56: 輪廓分析(Sihouette Analysis)  
+Day_56: 輪廓分析(Silhouette Analysis)  
         用來評估資料分群的適當性。  
         (1) 輪廓分數(Silhouette Score) = (b_i - a_i)/max{ b_i, a_i },   
         其中 a_i : 對任一筆資料，與其同一群簇資料的平均距離；b_i : 對任一筆資料，不同群簇的資料與其平均距離的最大值。
