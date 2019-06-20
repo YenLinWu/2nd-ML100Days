@@ -105,6 +105,11 @@ Day_50: 堆疊泛化(Stacking)
 Day_55: K-Mean  
         將資料分成 k 個群簇(cluster)，使得在同一群簇中的資料彼此盡量相近，且不同群簇的資料盡量不同。  
         
+        程式碼：
+        from sklearn.cluster import KMeans
+        KMeans = KMeans( n_clusters, init, n_init )
+        
+        
 Day_56: 輪廓分析(Silhouette Analysis)  
         用來評估資料分群的適當性。  
         (1) 輪廓分數(Silhouette Score) = (b_i - a_i)/max{ b_i, a_i },   
@@ -117,8 +122,12 @@ Day_57: 階層分群(Hierarchical Clustering)
         
         程式碼：  
         from sklearn.cluster import AgglomerativeClustering
-        AgglomerativeClustering( n_clusters, linkage )    
+        HC = AgglomerativeClustering( n_clusters, linkage )  
+        HC.fix( data )
 
          
-         
+Day_58: 2D 樣版資料集(2D Toy Dataset)  
+        利用圖形的視覺呈現而非量化(如：輪廓分析)，來評估非監督式模型的表現。  
+        
+        
   
