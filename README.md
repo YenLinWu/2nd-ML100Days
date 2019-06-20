@@ -110,9 +110,15 @@ Day_56: 輪廓分析(Silhouette Analysis)
         (1) 輪廓分數(Silhouette Score) = (b_i - a_i)/max{ b_i, a_i },   
         其中 a_i : 對任一筆資料，與其同一群簇資料的平均距離；b_i : 對任一筆資料，不同群簇的資料與其平均距離的最大值。  
         ＊ 輪廓分數越大，表示越能表現每個群簇中資料點越近，且不同群簇彼此相距越遠的效果！！
+   
+   
+Day_57: 階層分群(Hierarchical Clustering)  
+        可在不定義分群個數只定義距離的情況做分群(Bottom-down)，但不適合應用於大量的資料上。 
         
-              
-      
+        程式碼：  
+        from sklearn.cluster import AgglomerativeClustering
+        AgglomerativeClustering( n_clusters, linkage )    
+
          
          
   
