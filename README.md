@@ -130,4 +130,15 @@ Day_58: 2D 樣版資料集(2D Toy Dataset)
         利用圖形的視覺呈現而非量化(如：輪廓分析)，來評估非監督式模型的表現。  
         
         
+Day_59: 主成份分析(Principal Component Analysis)    
+        一種將資料降維到特定維度的方法，有助於加速機器學習演算法，降維後新特徵為舊特徵的線性組合。  
+        註：於監督式學習中，不建議在一開使就用 PCA ，因可能造成失去重要的特徵導致模型 underfitting。  
   
+        程式碼：  
+        from sklearn import decomposition
+        PCA = decomposition.PCA( n_components ) 
+        PCA.fit( data )
+        New_Features = PCA.transform( data )
+        
+        
+        
