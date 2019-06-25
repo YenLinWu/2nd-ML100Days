@@ -130,8 +130,8 @@ Day_58: 2D 樣版資料集(2D Toy Dataset)
         利用圖形的視覺呈現而非量化(如：輪廓分析)，來評估非監督式模型的表現。  
         
         
-Day_59: 主成份分析(Principal Component Analysis)    
-        一種將資料降維到特定維度的方法，有助於加速機器學習演算法，降維後新特徵為舊特徵的線性組合。  
+Day_59: 主成份分析(Principal Component Analysis, PCA)    
+        一種將資料降維到特定維度的方法，有助於加速機器學習演算法；降維後新特徵為舊特徵的線性組合，係一種線性降維的方法。  
         註：於監督式學習中，不建議在一開使就用 PCA ，因可能造成失去重要的特徵導致模型 underfitting。  
   
         程式碼：  
@@ -139,6 +139,24 @@ Day_59: 主成份分析(Principal Component Analysis)
         PCA = decomposition.PCA( n_components ) 
         PCA.fit( data )
         New_Features = PCA.transform( data )
+        
+        
+Day_60: 手寫辨識資料集(Modified National Institute of Standards and Technology Datasets, MNIST)    
+
+Day_61: t-SEN  
+        亦是一種降維方法，對於高維度的資料用 Gaussian 分布、低維度資料用 t 分布來近似，再透過 KL Divergence 計算其相似度，以梯度下降(Gradient Descent)求最佳解。
+        
+        程式碼：  
+        from sklearn import manifold
+        tSEN = manifold.TSNE( n_components, early_exaggeration, random_state, init = 'pca', learning_rate ) 
+        data_tSEN = tSEN.fit_transform( data)
+        
+        
+        
+        
+        
+        
+        
         
         
         
