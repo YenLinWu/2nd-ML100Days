@@ -156,8 +156,18 @@ Day_62: 流形還原
 將高維度中相近的點，對應至低維度空間中，盡可能保持資料點彼此間的距離關係。比方說，若資料結構像瑞士卷一般，則流形還原就是將它攤開且鋪平。  
   
   
-  
-  
+深度學習(Deep Learning)  
+Day_63 ~ Day_065:       
+    (1) 批次大小(Batch Size): 越小，學習曲線較震盪，但收斂速度較快。    
+    (2) 學習率(Learnng Rate): 越大，學習曲線較震盪，但收斂速度較快；但選擇過大時，可能造成無法收斂的情況。  
+    (3) 正規化(Regularization): 在 L1/L2 正規化非深度學習上的效果較為明顯，而正規化參數較小才有效果。  
+    (4) 隱藏層(Hidden Layer)的層數不多時，啟動函數(Activation Function)選用 Sigmoid / Tanh 的效果較 Relu 好。但實務上，Relu 所需的計算時間短，而 Sigmoid 需大量的計算時間。  
+    註：深度學習體驗平台 TensorFlow Playground  https://playground.tensorflow.org    
+    
+    
+    
+    
+
         
         
         
