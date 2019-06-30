@@ -101,10 +101,27 @@ Reference: https://medium.com/@contactsunny/label-encoder-vs-one-hot-encoder-in-
          plt.show( )
 
 
+#### Day_006: 篩選數值型欄位、利用圖形尋找 Outliers( 盒鬚圖、ECDF、直方圖 )  
+   * Dataframe 的欄位型態統計  
+   
+         程式碼：  
+         Col_Type = Data.dtypes.to_frame( ).reset_index( )
+         Col_Type = pd.value_counts( Col_Type[ 'Type' ] ).reset_index( )
+         for i in np.arange( Col_Type.shape[0] ):
+             print( str( Col_Type.iloc[ i, 0 ] ) + ' 型態的欄位有 ' + str( Col_Type.iloc[ i, 1 ] ) + ' 欄' )
+
+   * 篩選數值型態的欄位
+   
+         程式碼： 
+         # 篩選數值型態的欄位
+         dtype_select = [ np.dtype( int ), np.dtype( float ) ]
+         numeric_cols = list( Data.columns[ list( Data.dtypes.isin( dtype_select ) ) ] )
+         
+         # 排除只有 2 個值的欄位( 例如：0 跟 1 ) 
+         numeric_cols = list( data[ numeric_cols ].columns[ list( data[ numeric_cols ].apply( lambda x :len( x.unique() )!= 2 ) ) ] )
 
 
 
-Day_006: 篩選數值型欄位、Outliers( 盒鬚圖、ECDF、直方圖 )  
 Day_007: Outlier的處理( 補 分位數(Quantile) )  
 Day_008: 資料分組離散化( cut() 函數 : 等距分組 )  
 Day_009: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )檢視相關性  
