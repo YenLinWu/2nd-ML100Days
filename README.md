@@ -18,22 +18,47 @@
 
 
 #### Day_002: 讀取資料、檢視資料資訊  
-資料讀取
+   * 資料讀取
 
-        程式碼：  
-        dir_data = ''                                # 資料存放路徑
-        data_name = os.path.join( dir_data, '檔名' )  # 資料檔名
-        Data = pd.read_csv( data_name )              # 讀取資料
+         程式碼：  
+         dir_data = ''                                # 資料存放路徑
+         data_name = os.path.join( dir_data, '檔名' )  # 資料檔名
+         Data = pd.read_csv( data_name )              # 讀取資料
 
-檢視資料的樣態  
+   * 檢視資料的樣態  
 
-        程式碼：  
-        data.shape       # 資料 row 與 column 的數目
-        data.columns     # 資料的欄位名稱
-        data.info( )     # 資料欄位資訊( 可知欄位有無 Missing Values )
-        data.types       # 資料欄位的型態( object, int, float )
+         程式碼：  
+         data.shape       # 資料 row 與 column 的數目
+         data.columns     # 資料的欄位名稱
+         data.info( )     # 資料欄位資訊( 可知欄位有無 Missing Values )
+         data.types       # 資料欄位的型態( object, int, float )
 
-Day_003: 讀取網頁資料(txt)、txt 轉成 Dataframe、Try-Except    
+
+#### Day_003: 建立新的 Dataframe、Try-Except 例外處理  
+   * 建立 dataframe  
+    
+         程式碼：
+         Data = pd.DataFrame( data, columns )
+          
+   * Try-Except 例外處理  
+   
+         程式碼：
+         try : 
+            執行原本工作
+         except :
+            若上述原本工作無法執行時，則執行此例外處理
+            
+   Example : 
+         
+         a = 
+         b = 
+         try : 
+            if a < b : 
+               print( 'b - a = ' + str( b-a ) )
+         except :
+               print( 'a >= b ' )
+
+
 Day_004: One-Hot Encoder( get_dummies() 函數 )    
 Day_005: 計算平均值、標準差、最大值、最小值 及 繪製直方圖  
 Day_006: 篩選數值型欄位、Outliers( 盒鬚圖、ECDF、直方圖 )  
