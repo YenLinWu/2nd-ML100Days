@@ -2,19 +2,19 @@
 
 
    
-#### Day_001: 定義 Mean Squared Error 及 Mean Absolute Error  
-MSE  
+#### Day_001: 定義 Mean Squared Error 及 Mean Absolute Error   
+   * MSE  
 
-        程式碼：  
-        def mean_squared_error( y, y_hat ):
-            MSE = np.sum(  ( y - y_hat )**2 ) / len( y )
-            return MSE
-MAE
+         程式碼：  
+         def mean_squared_error( y, y_hat ):
+             MSE = np.sum(  ( y - y_hat )**2 ) / len( y )
+             return MSE
+   * MAE
 
-        程式碼： 
-        def mean_squared_error( y, y_hat ):
-            MAE = np.sum(  np.abs( y - y_hat ) ) / len( y )
-            return MSE
+         程式碼： 
+         def mean_squared_error( y, y_hat ):
+             MAE = np.sum(  np.abs( y - y_hat ) ) / len( y )
+             return MSE
 
 
 #### Day_002: 讀取資料、檢視資料資訊  
