@@ -68,21 +68,42 @@
          OneHot_Data = pd.get_dummies( Subset_Data )
 
 當類別(/離散)型特徵的取值之間有大小關係時(如：尺寸)，可利用 Label Encoder 將特徵扁平化 :  
-方法一：
+   * 方法一：
 
          程式碼：  
          from sklearn.preprocessing import LabelEncoder
          Subset_Data = Data[ '欄位名稱' ]  # 篩選資料
          Label_Data = LabelEncoder( ).fit_transform( Subset_Data )
 
-方法二：
+   * 方法二：
 
          程式碼：  
          mapping = { 'XL': 3, 'L': 2, 'M': 1 }
          Data[ '欄位名稱_2' ] = df[ '欄位名稱_1' ].map( mapping )
 
+Reference: https://medium.com/@contactsunny/label-encoder-vs-one-hot-encoder-in-machine-learning-3fc273365621
 
-Day_005: 計算平均值、標準差、最大值、最小值 及 繪製直方圖  
+
+#### Day_005: 平均值、標準差、最大值、最小值 及 直方圖  
+
+         程式碼：  
+         Data[ [ '欄位名稱' ] ].mean( )   # 平均值
+         Data[ [ '欄位名稱' ] ].std( )    # 標準差
+         Data[ [ '欄位名稱' ] ].min( )    # 最小值
+         Data[ [ '欄位名稱' ] ].max( )    # 最大值
+         
+         # 繪製直方圖
+         Data[ '欄位名稱' ].hist( bins , label = '', color )  
+         plt.title( '' )     # 直方圖標題
+         plt.xlabel( '' )    # x 軸標籤
+         plt.ylabel( '' )    # y 軸標籤
+         plt.legend( )
+         plt.show( )
+
+
+
+
+
 Day_006: 篩選數值型欄位、Outliers( 盒鬚圖、ECDF、直方圖 )  
 Day_007: Outlier的處理( 補 分位數(Quantile) )  
 Day_008: 資料分組離散化( cut() 函數 : 等距分組 )  
