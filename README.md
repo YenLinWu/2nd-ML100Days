@@ -59,13 +59,15 @@
                print( 'a >= b ' )
 
 
-#### Day_004: One-Hot Encoder( get_dummies() 函數 )    
-當類別(/離散)型特徵的取值之間無大小關係時(如：星期):
+#### Day_004: One-Hot Encoder、Label Encoder  
+當類別(/離散)型特徵的取值之間無大小關係時(如：星期)，可利用 OneHot Encoder 將特徵扁平化 :
 
          程式碼：  
          from sklearn.preprocessing import OneHotEncoder
          Subset_Data = Data[ [ '欄位名稱' ] ]  # 篩選
          OneHot_Data = pd.get_dummies( Subset_Data )
+
+當類別(/離散)型特徵的取值之間有大小關係時(如：尺寸)，可利用 Label Encoder 將特徵扁平化 :
 
 
 Day_005: 計算平均值、標準差、最大值、最小值 及 繪製直方圖  
