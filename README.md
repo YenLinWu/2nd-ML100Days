@@ -240,7 +240,19 @@ Heatmap 常用於呈現特徵間的相關性，也可用於呈現不同條件下
          Data.to_csv( '檔名.csv', index = False )
          
  
-#### Day_017: 特徵工程(Feature Engineering)簡介
+#### Day_017: 特徵工程(Feature Engineering)簡介 
+(1) 數值型特徵
+   * Step 1 : 填補缺漏值(Missing Values)
+   * Step 2 : 去除或調整離群值(Outliers)
+   * Step 3 : 去除偏態  
+   * Step 4 : 特徵縮放(標準化、最小最大化)  
+   * Step 5 : 特徵組合
+   * Step 6 : 特徵篩選與評估  
+     
+(2) 類別型特徵  
+   * 標籤編碼(Label Encoding) : 將類別依序編上編號
+   * 獨熱編碼(OneHot Encoding) : 將每個不同的類別分獨立為一欄
+  
 
 #### Day_018: 特徵的類型
    (1) 數值型  
@@ -254,7 +266,7 @@ Heatmap 常用於呈現特徵間的相關性，也可用於呈現不同條件下
    * 平均值：資料偏態不明顯時  
    * 中位數：資料有很明顯偏態時  
    
-標準化(Standard Scaler及最大最小化(MinMax Scaler) 
+標準化(Standard Scaler)及最大最小化(MinMax Scaler) 
    * 假定資料符合常態分配，適合使用標準化做特徵縮放。  
    * 假定資料符合均勻分配，適合使用最大最小化做特徵縮放。  
    * 標準化較不易受極端值的影響。
@@ -272,6 +284,50 @@ Heatmap 常用於呈現特徵間的相關性，也可用於呈現不同條件下
          # 最大最小化
          Data[ Col ] = MinMaxScaler( ).fit_transform( Data[ Col ].values.reshape( -1, 1 ) )
          
+
+#### Day_020: 離群值的處理 
+捨去離群值：若離群值僅有少數幾筆資料時，此方法不至於對原始資料的分佈造成變化。
+
+         程式碼：
+         Col = ''            # 輸入欄位名稱
+         Upper_Bound =       # 資料的上限
+         Lower_Bound =       # 資料的下限
+         
+         keep_indexs = ( Data[ Col ] < Upper_Bound ) & ( Data[ Col ] > Lower_Bound )
+         Data = Data[ keep_indexs ]
+
+調整離群值：
+
+         程式碼：
+         Col = ''            # 輸入欄位名稱
+         
+         Data[ Col ] = Data[ Col ].clip( Lower_Bound, Upper_Bound ) # 將大於上限的數值調整成上限，小於下限的數值調整成下限
+         
+
+#### Day_021: 去偏態 
+偏態常出現於非負且可能為 0 的欄位(例如：價格、計數等)  
+
+自然對數(log)去偏：
+
+         程式碼：
+         Col = ''            # 輸入欄位名稱
+         Data[ Col ] = np.log1p( Data[ Col ] )     # y = log( 1 + x ) 可將 0 對應到 0
+
+分布去偏(boxcox)：
+
+         程式碼：
+         from scipy import stats
+         
+         Col = ''            # 輸入欄位名稱
+         Data[ Col ] = stats.boxcox( Data[ Col ], lambda )   
+         
+         # lambda = 0   : logarithmic transformation  log(X)  
+         # lambda = 0.5 : square root transformation  sqrt(X)          
+
+Reference: https://www.itread01.com/content/1543890427.html  
+
+
+#### Day_022: 標籤編碼(Label Encoding)、獨熱編碼(OneHot Encoding)  
 
 Day_023: Label Encoder 標籤編碼( LabelEncoder() 函數 ) 及 Mean Encoder 均值編碼( 利用 groupby 函數執行 )  
 Day_024: Counting Encoder 計數編碼( 利用 groupby 函數執行 ) 及 Feature Hash 特徵雜湊( hash() 函數 )  
