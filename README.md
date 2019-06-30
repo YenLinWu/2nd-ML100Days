@@ -4,12 +4,21 @@
    
 Day_001: 定義 Mean Squared Error 及 Mean Absolute Error  
 
-### Day_002: 讀取資料、查看資料  
-        
+### Day_002: 讀取資料、檢視資料資訊  
+資料讀取
+
         程式碼：  
-        from sklearn.cluster import AgglomerativeClustering
-        HC = AgglomerativeClustering( n_clusters, linkage )  
-        HC.fix( data )
+        dir_data = ''                                # 資料存放路徑
+        data_name = os.path.join( dir_data, '檔名' )  # 資料檔名
+        Data = pd.read_csv( data_name )              # 讀取資料
+
+檢視資料的樣態  
+
+        程式碼：  
+        data.shape       # 資料 row 與 column 的數目
+        data.columns     # 資料的欄位名稱
+        data.info( )     # 資料欄位資訊( 可知欄位有無 Missing Values )
+        data.types       # 資料欄位的型態( object, int, float )
 
 Day_003: 讀取網頁資料(txt)、txt 轉成 Dataframe、Try-Except    
 Day_004: One-Hot Encoder( get_dummies() 函數 )    
