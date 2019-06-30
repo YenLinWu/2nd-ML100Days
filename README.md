@@ -28,17 +28,18 @@
    * 檢視資料的樣態  
 
          程式碼：  
-         data.shape       # 資料 row 與 column 的數目
-         data.columns     # 資料的欄位名稱
-         data.info( )     # 資料欄位資訊( 可知欄位有無 Missing Values )
-         data.types       # 資料欄位的型態( object, int, float )
+         Data.shape              # 資料 row 與 column 的數目  
+         Data.columns            # 資料的欄位名稱  
+         Data.types              # 資料欄位的型態( object, int, float )
+         Data.info( )            # 資料欄位資訊( 可知欄位有無 Missing Values )  
+         Data.isnull( ).sum( )   # 資料各欄位的 Missing Values 總數
 
 
 #### Day_003: 建立新的 Dataframe、Try-Except 例外處理  
    * 建立 dataframe  
     
          程式碼：
-         Data = pd.DataFrame( data, columns )
+         DataFrame = pd.DataFrame( Data, columns )
           
    * Try-Except 例外處理  
    
@@ -116,13 +117,33 @@ Reference: https://medium.com/@contactsunny/label-encoder-vs-one-hot-encoder-in-
          # 篩選數值型態的欄位
          dtype_select = [ np.dtype( int ), np.dtype( float ) ]
          numeric_cols = list( Data.columns[ list( Data.dtypes.isin( dtype_select ) ) ] )
-         
          # 排除只有 2 個值的欄位( 例如：0 跟 1 ) 
          numeric_cols = list( data[ numeric_cols ].columns[ list( data[ numeric_cols ].apply( lambda x :len( x.unique() )!= 2 ) ) ] )
 
 
+#### Day_007: Outlier的處理( 以平均值、中位數、最小值、最大值或眾數 取代  )  
+   * 百分位數(Quantile)
+         
+         程式碼：
+         # 計算第 0 到 第 100 的百分位數
+         q_all = [ np.percentile( data[ ~data[ Missing_col ].isnull( ) ][ Missing_col ], q = i ) for i in np.arange( 0, 101 ) ] 
+         Qth_Percentile = pd.DataFrame( { 'q': list( range( 101 ) ), 'value': q_all } )
+         Qth_Percentile
+         
+   * 眾數(Mode)
+   
+         程式碼：
+         from collections import defaultdict  
+         Col = ' '    # 輸入計算眾數的欄位名稱
+         
+         mode_dict = defaultdict( lambda : 0 )
+         for value in data[ ~data[ Missing_col ].isnull( ) ][ Missing_col ] :
+             mode_dict[value] += 1
+         Mode = sorted( mode_dict.items( ), key = lambda kv : kv[ 1 ], reverse = True )
+         
+         print( 'Mode of ' + str( Col ) + ' = ' + str( Mode[ 0 ][ 0 ] ) )
 
-Day_007: Outlier的處理( 補 分位數(Quantile) )  
+
 Day_008: 資料分組離散化( cut() 函數 : 等距分組 )  
 Day_009: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )檢視相關性  
 Day_010: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )或盒鬚圖( Box Plot )檢視相關性  
