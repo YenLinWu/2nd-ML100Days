@@ -53,6 +53,7 @@
          
          a = 
          b = 
+         
          try : 
             if a < b : 
                print( 'b - a = ' + str( b-a ) )
@@ -144,16 +145,134 @@ Reference: https://medium.com/@contactsunny/label-encoder-vs-one-hot-encoder-in-
          print( 'Mode of ' + str( Col ) + ' = ' + str( Mode[ 0 ][ 0 ] ) )
 
 
-Day_008: 資料分組離散化( cut() 函數 : 等距分組 )  
-Day_009: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )檢視相關性  
-Day_010: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )或盒鬚圖( Box Plot )檢視相關性  
-Day_011: 資料分組離散化( cut() : 等距分組 + np.linspace() 函數 )、KDE、長條圖( Bar Plot )  
-Day_012: 資料分組離散化( cut() : 等距分組 、 qcut() : 等頻分組 )  
-Day_013: 資料分組離散化( cut() : 等距分組 、 qcut() : 等頻分組 )  
-Day_014: 繪圖排版 subplots   
-Day_015: Heatmap、Gridplot、隨機矩陣( np.random.random : 隨機小數均勻分布；np.random.randn : 常態分布 )   
-Day_016: 匯出儲存成 csv 檔  
-Day_017: 篩選類別型的欄位，將其轉成數值型態欄位( LabelEncoder()、MinMaxScaler() )  
+#### Day_008: 資料分組離散化  
+   * 等距分組  
+   
+         程式碼：
+         Col = ' '    # 輸入等距分組的欄位名稱
+         
+         Maximum = Data[ Col ].values.max( )
+         cut_rule = [ 0, 2, 4, Maximum ]    # 分割區間：( 0, 2 ]、( 2, 4 ]、( 4, Maximum ]
+         Data[ str(Col)+'Group' ] = pd.cut( Data[ Col ].values, cut_rule, include_lowest = True, precision = 1 )
+         Data[ str(Col)+'Group' ].value_counts( )
+
+
+#### Day_009: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )檢視相關性  
+   * 相關係數
+   
+         程式碼：
+         Data.corr( )  # 資料欄位彼此的相關係數
+
+
+#### Day_010: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )或盒鬚圖( Box Plot )檢視相關性  
+
+         程式碼：
+         Data.corr( )['TARGET']  # 目標欄位(TARGET)與所有欄位的相關係數  
+         
+         # 相關係數最大的前 5 個欄位
+         Data.corr( )[ 'TARGET' ].sort_values( ascending = False ).head(  )
+
+
+#### Day_011: 資料分組離散化、長條圖( Bar Plot )  
+   * 等距分組
+   
+         程式碼：
+         Col = ' '    # 輸入等距分組的欄位名稱
+         
+         bin_cut =  np.linspace( 0, 50, num = 11, dtype = 'int64' )                # 分割區間 = [0 15 20 25 30 35 40 45 50]
+         Data[ str(Col)+'Group' ] = pd.cut( Data[ Col ], bins = bin_cut )  
+         Group_Counts = Data[ str(Col)+'Group' ].value_counts( ).reset_index( )    # 計算每個分組中的資料總數
+         Group_Counts.columns = [ str(Col)+'Group', 'Counts' ]
+
+   * 長條圖(Bar Plot)
+   
+         程式碼：
+         x = Group_Counts[ str(Col)+'Group' ]
+         y = Group_Counts[ 'Counts' ]
+         
+         plt.figure( figsize = ( 8, 8 ) )
+         sns.barplot( x, y )
+    
+         plt.title('')     # 長條圖的標題
+         plt.xticks( rotation = 75 ) 
+         plt.xlabel( '' )
+         plt.ylabel( '' )
+         
+
+#### Day_012: 資料分組離散化
+   * 等頻分組（ 可得知 0%、25%、50%、75%、100% 百分位數 ）
+   
+         程式碼：
+         Col = ' '    # 輸入等頻分組的欄位名稱
+         
+         Data[ str(Col)+'Group' ] = pd.qcut( Data[ Col ], 4 )  # 依照 quartiles [0, 0.25, 0.5, 0.75, 1] 分割
+         Data[ str(Col)+'Group' ].value_counts( )              # 每個分組的資料總數皆會相同！！
+
+
+#### Day_013: 資料分組離散化  
+
+#### Day_014: 繪圖排版 subplots   
+
+#### Day_015: Heatmap、Gridplot  
+Heatmap 常用於呈現特徵間的相關性，也可用於呈現不同條件下，數量的大小關係。
+
+         # 將欄位彼此的相關係數，利用 Heatmap 視覺化
+          
+         程式碼：
+         plt.figure( figsize = ( 10, 10 ) )
+         sns.heatmap( Data.corr( ), cmap = plt.cm.RdYlBu_r, annot = True, fmt = '.1f', ax = axs )
+         plt.show( )
+          
+   註 1：隨機生成數值落於 $( a, b )$ 的隨機矩陣
+         
+         程式碼：
+         Matrix = ( b - a ) * np.random.random( ( nrow, ncol ) ) + a 
+      
+   註 2：隨機生成符合常態分配的隨機矩陣
+         
+         程式碼：
+         Matrix = np.random.randn( nrow, ncol ) 
+        
+         
+#### Day_016: 匯出儲存成 csv 檔  
+ 
+         程式碼：
+         Data.to_csv( '檔名.csv', index = False )
+         
+ 
+#### Day_017: 特徵工程(Feature Engineering)簡介
+
+#### Day_018: 特徵的類型
+   (1) 數值型  
+   (2) 類別型  
+   (3) 二元特徵：可視為數值型也可視為類別型(例：True = 1/ False = 0)  
+   (4) 排序型：例如名次、百分等級等有大小關係，通常以數值型特徵處理，因若視為類別型處理，將會失去排序的資訊。  
+
+
+#### Day_019: 數值型特徵  
+填補 Missing Values ( 盡量不要改變資料的分佈情況！ )
+   * 平均值：資料偏態不明顯時  
+   * 中位數：資料有很明顯偏態時  
+   
+標準化(Standard Scaler及最大最小化(MinMax Scaler) 
+   * 假定資料符合常態分配，適合使用標準化做特徵縮放。  
+   * 假定資料符合均勻分配，適合使用最大最小化做特徵縮放。  
+   * 標準化較不易受極端值的影響。
+   * 若使用最大最小化，需注意資料是否有極端值。  
+   * 樹狀模型(如：決策樹、隨機森林、梯度提升機)：標準化及最大最小化後對預測不會有影響。
+   * 非樹狀模型(如：線性迴歸、邏輯斯迴歸、類神經網絡等)：標準化及最大最小化後對預測會有影響。
+
+         程式碼：
+         from sklearn.preprocessing import StandardScaler, MinMaxScaler
+         Col = ''   # 輸入資料標準化(/最大最小化)的欄位名稱
+         
+         # 標準化
+         Data[ Col ] = StandardScaler( ).fit_transform( Data[ Col ].values.reshape( -1, 1 ) )
+         
+         # 最大最小化
+         Data[ Col ] = MinMaxScaler( ).fit_transform( Data[ Col ].values.reshape( -1, 1 ) )
+         
+
 Day_023: Label Encoder 標籤編碼( LabelEncoder() 函數 ) 及 Mean Encoder 均值編碼( 利用 groupby 函數執行 )  
 Day_024: Counting Encoder 計數編碼( 利用 groupby 函數執行 ) 及 Feature Hash 特徵雜湊( hash() 函數 )  
 Day_025: 時間特徵分解( 年、月、日、時、分、秒 ) 及 週期循環特徵( 利用 sin 或 cos 函數執行 )  
