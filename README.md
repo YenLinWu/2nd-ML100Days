@@ -1,9 +1,16 @@
-#2nd-ML100Days
-==============
+# 2nd-ML100Days
+
 
    
 Day_001: 定義 Mean Squared Error 及 Mean Absolute Error  
-Day_002: 讀取資料、查看資料  
+
+### Day_002: 讀取資料、查看資料  
+        
+        程式碼：  
+        from sklearn.cluster import AgglomerativeClustering
+        HC = AgglomerativeClustering( n_clusters, linkage )  
+        HC.fix( data )
+
 Day_003: 讀取網頁資料(txt)、txt 轉成 Dataframe、Try-Except    
 Day_004: One-Hot Encoder( get_dummies() 函數 )    
 Day_005: 計算平均值、標準差、最大值、最小值 及 繪製直方圖  
