@@ -64,10 +64,22 @@
 
          程式碼：  
          from sklearn.preprocessing import OneHotEncoder
-         Subset_Data = Data[ [ '欄位名稱' ] ]  # 篩選
+         Subset_Data = Data[ [ '欄位名稱' ] ]  # 篩選資料
          OneHot_Data = pd.get_dummies( Subset_Data )
 
-當類別(/離散)型特徵的取值之間有大小關係時(如：尺寸)，可利用 Label Encoder 將特徵扁平化 :
+當類別(/離散)型特徵的取值之間有大小關係時(如：尺寸)，可利用 Label Encoder 將特徵扁平化 :  
+方法一：
+
+         程式碼：  
+         from sklearn.preprocessing import LabelEncoder
+         Subset_Data = Data[ '欄位名稱' ]  # 篩選資料
+         Label_Data = LabelEncoder( ).fit_transform( Subset_Data )
+
+方法二：
+
+         程式碼：  
+         mapping = { 'XL': 3, 'L': 2, 'M': 1 }
+         Data[ '欄位名稱_2' ] = df[ '欄位名稱_1' ].map( mapping )
 
 
 Day_005: 計算平均值、標準差、最大值、最小值 及 繪製直方圖  
