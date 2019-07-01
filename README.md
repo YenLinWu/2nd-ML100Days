@@ -61,12 +61,13 @@
                print( 'a >= b ' )
 
 
-#### Day_004: One-Hot Encoder、Label Encoder  
+#### Day_004: 獨熱編碼(OneHot Encoder)、標籤編碼(Label Encoder)  * 參考 Day_022 說明
 當類別(/離散)型特徵的取值之間無大小關係時(如：星期)，可利用 OneHot Encoder 將特徵扁平化 :
 
          程式碼：  
          from sklearn.preprocessing import OneHotEncoder
-         Subset_Data = Data[ [ '欄位名稱' ] ]  # 篩選資料
+         Col = ''     # 輸入欄位名稱
+         Subset_Data = Data[ [ Col ] ]  
          OneHot_Data = pd.get_dummies( Subset_Data )
 
 當類別(/離散)型特徵的取值之間有大小關係時(如：尺寸)，可利用 Label Encoder 將特徵扁平化 :  
@@ -74,7 +75,8 @@
 
          程式碼：  
          from sklearn.preprocessing import LabelEncoder
-         Subset_Data = Data[ '欄位名稱' ]  # 篩選資料
+         Col = ''     # 輸入欄位名稱
+         Subset_Data = Data[ Col ]  # 篩選資料
          Label_Data = LabelEncoder( ).fit_transform( Subset_Data )
 
    * 方法二：
@@ -251,8 +253,14 @@ Heatmap 常用於呈現特徵間的相關性，也可用於呈現不同條件下
      
 (2) 類別型特徵  
    * 標籤編碼(Label Encoding) : 將類別依序編上編號
-   * 獨熱編碼(OneHot Encoding) : 將每個不同的類別分獨立為一欄
-  
+   * 獨熱編碼(OneHot Encoding) : 將每個不同的類別分獨立為一欄 
+   * 均值編碼(Mean Encoding) : 利用目標值(Target)的平均值，取代類別型特徵   
+     註：程式碼參考 Day_023  
+   * 計數編碼(Counting Encoding) : 若類別的目標均值與其總比數正(\負)相關，則可利用每個類別的總筆數，取代類別型特徵  
+   * 特徵雜湊(Feature Hash) : 相異類別的數量非常龐大時使用(例如：姓名)   
+
+(3) 時間型特徵
+
 
 #### Day_018: 特徵的類型
    (1) 數值型  
@@ -327,10 +335,24 @@ Heatmap 常用於呈現特徵間的相關性，也可用於呈現不同條件下
 Reference: https://www.itread01.com/content/1543890427.html  
 
 
-#### Day_022: 標籤編碼(Label Encoding)、獨熱編碼(OneHot Encoding)  
+#### Day_022: 標籤編碼(Label Encoding)、獨熱編碼(OneHot Encoding)  * 程式碼參考 Day_004
+類別型特徵建議採用標籤編碼，若該特徵重要性高且類別值少，則可考慮使用獨熱編碼。
 
-Day_023: Label Encoder 標籤編碼( LabelEncoder() 函數 ) 及 Mean Encoder 均值編碼( 利用 groupby 函數執行 )  
-Day_024: Counting Encoder 計數編碼( 利用 groupby 函數執行 ) 及 Feature Hash 特徵雜湊( hash() 函數 )  
+
+#### Day_023: 均值編碼(Mean Encoding) 
+利用目標值(Target)的平均值，取代類別型特徵。容易造成模型 overfitting!!
+
+         程式碼：
+         target_col = ''     # 輸入目標欄位名稱
+         Col = ''            # 輸入均值編碼的欄位名稱
+         
+         target_mean = Data.groupby( [ Col ] )[ 'Survived' ].mean( ).reset_index( )
+         target_mean = [ Col, f'{c}_mean' ]                                 
+
+
+#### Day_024: 計數編碼(Counting Encoding)、特徵雜湊(Feature Hash)   
+
+
 Day_025: 時間特徵分解( 年、月、日、時、分、秒 ) 及 週期循環特徵( 利用 sin 或 cos 函數執行 )  
 Day_026: 特徵組合( ex: 經緯度座標 )  
 Day_027: 特徵組合( Group by Encoding 群聚編碼 : 合成類別特徵與數值特徵 )  
