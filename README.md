@@ -1,24 +1,358 @@
 # 2nd-ML100Days
+
+
    
-Day_001: 定義 Mean Squared Error 及 Mean Absolute Error  
-Day_002: 讀取資料、查看資料  
-Day_003: 讀取網頁資料(txt)、txt 轉成 Dataframe、Try-Except    
-Day_004: One-Hot Encoder( get_dummies() 函數 )    
-Day_005: 計算平均值、標準差、最大值、最小值 及 繪製直方圖  
-Day_006: 篩選數值型欄位、Outliers( 盒鬚圖、ECDF、直方圖 )  
-Day_007: Outlier的處理( 補 分位數(Quantile) )  
-Day_008: 資料分組離散化( cut() 函數 : 等距分組 )  
-Day_009: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )檢視相關性  
-Day_010: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )或盒鬚圖( Box Plot )檢視相關性  
-Day_011: 資料分組離散化( cut() : 等距分組 + np.linspace() 函數 )、KDE、長條圖( Bar Plot )  
-Day_012: 資料分組離散化( cut() : 等距分組 、 qcut() : 等頻分組 )  
-Day_013: 資料分組離散化( cut() : 等距分組 、 qcut() : 等頻分組 )  
-Day_014: 繪圖排版 subplots   
-Day_015: Heatmap、Gridplot、隨機矩陣( np.random.random : 隨機小數均勻分布；np.random.randn : 常態分布 )   
-Day_016: 匯出儲存成 csv 檔  
-Day_017: 篩選類別型的欄位，將其轉成數值型態欄位( LabelEncoder()、MinMaxScaler() )  
-Day_023: Label Encoder 標籤編碼( LabelEncoder() 函數 ) 及 Mean Encoder 均值編碼( 利用 groupby 函數執行 )  
-Day_024: Counting Encoder 計數編碼( 利用 groupby 函數執行 ) 及 Feature Hash 特徵雜湊( hash() 函數 )  
+#### Day_001: 定義 Mean Squared Error 及 Mean Absolute Error   
+   * MSE  
+
+         程式碼：  
+         def mean_squared_error( y, y_hat ):
+             MSE = np.sum(  ( y - y_hat )**2 ) / len( y )
+             return MSE
+   * MAE
+
+         程式碼： 
+         def mean_squared_error( y, y_hat ):
+             MAE = np.sum(  np.abs( y - y_hat ) ) / len( y )
+             return MSE
+
+
+#### Day_002: 讀取資料、檢視資料資訊  
+   * 資料讀取
+
+         程式碼：  
+         dir_data = ''                                # 資料存放路徑
+         data_name = os.path.join( dir_data, '檔名' )  # 資料檔名
+         Data = pd.read_csv( data_name )              # 讀取資料
+
+   * 檢視資料的樣態  
+
+         程式碼：  
+         Data.shape              # 資料 row 與 column 的數目  
+         Data.columns            # 資料的欄位名稱  
+         Data.types              # 資料欄位的型態( object, int, float )
+         Data.info( )            # 資料欄位資訊( 可知欄位有無 Missing Values )  
+         Data.isnull( ).sum( )   # 資料各欄位的 Missing Values 總數
+
+
+#### Day_003: 建立新的 Dataframe、Try-Except 例外處理  
+   * 建立 dataframe  
+    
+         程式碼：
+         DataFrame = pd.DataFrame( Data, columns )
+          
+   * Try-Except 例外處理  
+   
+         程式碼：
+         try : 
+            執行原本工作
+         except :
+            若上述原本工作無法執行時，則執行此例外處理
+            
+   Example : 
+         
+         a = 
+         b = 
+         
+         try : 
+            if a < b : 
+               print( 'b - a = ' + str( b-a ) )
+         except :
+               print( 'a >= b ' )
+
+
+#### Day_004: 獨熱編碼(OneHot Encoder)、標籤編碼(Label Encoder)  * 參考 Day_022 說明
+當類別(/離散)型特徵的取值之間無大小關係時(如：星期)，可利用 OneHot Encoder 將特徵扁平化 :
+
+         程式碼：  
+         from sklearn.preprocessing import OneHotEncoder
+         Col = ''     # 輸入欄位名稱
+         Subset_Data = Data[ [ Col ] ]  
+         OneHot_Data = pd.get_dummies( Subset_Data )
+
+當類別(/離散)型特徵的取值之間有大小關係時(如：尺寸)，可利用 Label Encoder 將特徵扁平化 :  
+   * 方法一：
+
+         程式碼：  
+         from sklearn.preprocessing import LabelEncoder
+         Col = ''     # 輸入欄位名稱
+         Subset_Data = Data[ Col ]  # 篩選資料
+         Label_Data = LabelEncoder( ).fit_transform( Subset_Data )
+
+   * 方法二：
+
+         程式碼：  
+         mapping = { 'XL': 3, 'L': 2, 'M': 1 }
+         Data[ '欄位名稱_2' ] = df[ '欄位名稱_1' ].map( mapping )
+
+Reference: https://medium.com/@contactsunny/label-encoder-vs-one-hot-encoder-in-machine-learning-3fc273365621
+
+
+#### Day_005: 平均值、標準差、最大值、最小值 及 直方圖  
+
+         程式碼：  
+         Data[ [ '欄位名稱' ] ].mean( )   # 平均值
+         Data[ [ '欄位名稱' ] ].std( )    # 標準差
+         Data[ [ '欄位名稱' ] ].min( )    # 最小值
+         Data[ [ '欄位名稱' ] ].max( )    # 最大值
+         
+         # 繪製直方圖
+         Data[ '欄位名稱' ].hist( bins , label = '', color )  
+         plt.title( '' )     # 直方圖標題
+         plt.xlabel( '' )    # x 軸標籤
+         plt.ylabel( '' )    # y 軸標籤
+         plt.legend( )
+         plt.show( )
+
+
+#### Day_006: 篩選數值型欄位、利用圖形尋找 Outliers( 盒鬚圖、ECDF、直方圖 )  
+   * Dataframe 的欄位型態統計  
+   
+         程式碼：  
+         Col_Type = Data.dtypes.to_frame( ).reset_index( )
+         Col_Type = pd.value_counts( Col_Type[ 'Type' ] ).reset_index( )
+         for i in np.arange( Col_Type.shape[0] ):
+             print( str( Col_Type.iloc[ i, 0 ] ) + ' 型態的欄位有 ' + str( Col_Type.iloc[ i, 1 ] ) + ' 欄' )
+
+   * 篩選數值型態的欄位
+   
+         程式碼： 
+         # 篩選數值型態的欄位
+         dtype_select = [ np.dtype( int ), np.dtype( float ) ]
+         numeric_cols = list( Data.columns[ list( Data.dtypes.isin( dtype_select ) ) ] )
+         # 排除只有 2 個值的欄位( 例如：0 跟 1 ) 
+         numeric_cols = list( data[ numeric_cols ].columns[ list( data[ numeric_cols ].apply( lambda x :len( x.unique() )!= 2 ) ) ] )
+
+
+#### Day_007: Outlier的處理( 以平均值、中位數、最小值、最大值或眾數 取代  )  
+   * 百分位數(Quantile)
+         
+         程式碼：
+         # 計算第 0 到 第 100 的百分位數
+         q_all = [ np.percentile( data[ ~data[ Missing_col ].isnull( ) ][ Missing_col ], q = i ) for i in np.arange( 0, 101 ) ] 
+         Qth_Percentile = pd.DataFrame( { 'q': list( range( 101 ) ), 'value': q_all } )
+         Qth_Percentile
+         
+   * 眾數(Mode)
+   
+         程式碼：
+         from collections import defaultdict  
+         Col = ' '    # 輸入計算眾數的欄位名稱
+         
+         mode_dict = defaultdict( lambda : 0 )
+         for value in data[ ~data[ Missing_col ].isnull( ) ][ Missing_col ] :
+             mode_dict[value] += 1
+         Mode = sorted( mode_dict.items( ), key = lambda kv : kv[ 1 ], reverse = True )
+         
+         print( 'Mode of ' + str( Col ) + ' = ' + str( Mode[ 0 ][ 0 ] ) )
+
+
+#### Day_008: 資料分組離散化  
+   * 等距分組  
+   
+         程式碼：
+         Col = ' '    # 輸入等距分組的欄位名稱
+         
+         Maximum = Data[ Col ].values.max( )
+         cut_rule = [ 0, 2, 4, Maximum ]    # 分割區間：( 0, 2 ]、( 2, 4 ]、( 4, Maximum ]
+         Data[ str(Col)+'Group' ] = pd.cut( Data[ Col ].values, cut_rule, include_lowest = True, precision = 1 )
+         Data[ str(Col)+'Group' ].value_counts( )
+
+
+#### Day_009: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )檢視相關性  
+   * 相關係數
+   
+         程式碼：
+         Data.corr( )  # 資料欄位彼此的相關係數
+
+
+#### Day_010: 計算相關係數( Correlation Coefficient )、散佈圖( Scatter Plot )或盒鬚圖( Box Plot )檢視相關性  
+
+         程式碼：
+         Data.corr( )['TARGET']  # 目標欄位(TARGET)與所有欄位的相關係數  
+         
+         # 相關係數最大的前 5 個欄位
+         Data.corr( )[ 'TARGET' ].sort_values( ascending = False ).head(  )
+
+
+#### Day_011: 資料分組離散化、長條圖( Bar Plot )  
+   * 等距分組
+   
+         程式碼：
+         Col = ' '    # 輸入等距分組的欄位名稱
+         
+         bin_cut =  np.linspace( 0, 50, num = 11, dtype = 'int64' )                # 分割區間 = [0 15 20 25 30 35 40 45 50]
+         Data[ str(Col)+'Group' ] = pd.cut( Data[ Col ], bins = bin_cut )  
+         Group_Counts = Data[ str(Col)+'Group' ].value_counts( ).reset_index( )    # 計算每個分組中的資料總數
+         Group_Counts.columns = [ str(Col)+'Group', 'Counts' ]
+
+   * 長條圖(Bar Plot)
+   
+         程式碼：
+         x = Group_Counts[ str(Col)+'Group' ]
+         y = Group_Counts[ 'Counts' ]
+         
+         plt.figure( figsize = ( 8, 8 ) )
+         sns.barplot( x, y )
+    
+         plt.title('')     # 長條圖的標題
+         plt.xticks( rotation = 75 ) 
+         plt.xlabel( '' )
+         plt.ylabel( '' )
+         
+
+#### Day_012: 資料分組離散化
+   * 等頻分組（ 可得知 0%、25%、50%、75%、100% 百分位數 ）
+   
+         程式碼：
+         Col = ' '    # 輸入等頻分組的欄位名稱
+         
+         Data[ str(Col)+'Group' ] = pd.qcut( Data[ Col ], 4 )  # 依照 quartiles [0, 0.25, 0.5, 0.75, 1] 分割
+         Data[ str(Col)+'Group' ].value_counts( )              # 每個分組的資料總數皆會相同！！
+
+
+#### Day_013: 資料分組離散化  
+
+#### Day_014: 繪圖排版 subplots   
+
+#### Day_015: Heatmap、Gridplot  
+Heatmap 常用於呈現特徵間的相關性，也可用於呈現不同條件下，數量的大小關係。
+
+         # 將欄位彼此的相關係數，利用 Heatmap 視覺化
+          
+         程式碼：
+         plt.figure( figsize = ( 10, 10 ) )
+         sns.heatmap( Data.corr( ), cmap = plt.cm.RdYlBu_r, annot = True, fmt = '.1f', ax = axs )
+         plt.show( )
+          
+   註 1：隨機生成數值落於 $( a, b )$ 的隨機矩陣
+         
+         程式碼：
+         Matrix = ( b - a ) * np.random.random( ( nrow, ncol ) ) + a 
+      
+   註 2：隨機生成符合常態分配的隨機矩陣
+         
+         程式碼：
+         Matrix = np.random.randn( nrow, ncol ) 
+        
+         
+#### Day_016: 匯出儲存成 csv 檔  
+ 
+         程式碼：
+         Data.to_csv( '檔名.csv', index = False )
+         
+ 
+#### Day_017: 特徵工程(Feature Engineering)簡介 
+(1) 數值型特徵
+   * Step 1 : 填補缺漏值(Missing Values)
+   * Step 2 : 去除或調整離群值(Outliers)
+   * Step 3 : 去除偏態  
+   * Step 4 : 特徵縮放(標準化、最小最大化)  
+   * Step 5 : 特徵組合
+   * Step 6 : 特徵篩選與評估  
+     
+(2) 類別型特徵  
+   * 標籤編碼(Label Encoding) : 將類別依序編上編號
+   * 獨熱編碼(OneHot Encoding) : 將每個不同的類別分獨立為一欄 
+   * 均值編碼(Mean Encoding) : 利用目標值(Target)的平均值，取代類別型特徵   
+     註：程式碼參考 Day_023  
+   * 計數編碼(Counting Encoding) : 若類別的目標均值與其總比數正(\負)相關，則可利用每個類別的總筆數，取代類別型特徵  
+   * 特徵雜湊(Feature Hash) : 相異類別的數量非常龐大時使用(例如：姓名)   
+
+(3) 時間型特徵
+
+
+#### Day_018: 特徵的類型
+   (1) 數值型  
+   (2) 類別型  
+   (3) 二元特徵：可視為數值型也可視為類別型(例：True = 1/ False = 0)  
+   (4) 排序型：例如名次、百分等級等有大小關係，通常以數值型特徵處理，因若視為類別型處理，將會失去排序的資訊。  
+
+
+#### Day_019: 數值型特徵  
+填補 Missing Values ( 盡量不要改變資料的分佈情況！ )
+   * 平均值：資料偏態不明顯時  
+   * 中位數：資料有很明顯偏態時  
+   
+標準化(Standard Scaler)及最大最小化(MinMax Scaler) 
+   * 假定資料符合常態分配，適合使用標準化做特徵縮放。  
+   * 假定資料符合均勻分配，適合使用最大最小化做特徵縮放。  
+   * 標準化較不易受極端值的影響。
+   * 若使用最大最小化，需注意資料是否有極端值。  
+   * 樹狀模型(如：決策樹、隨機森林、梯度提升機)：標準化及最大最小化後對預測不會有影響。
+   * 非樹狀模型(如：線性迴歸、邏輯斯迴歸、類神經網絡等)：標準化及最大最小化後對預測會有影響。
+
+         程式碼：
+         from sklearn.preprocessing import StandardScaler, MinMaxScaler
+         Col = ''   # 輸入資料標準化(/最大最小化)的欄位名稱
+         
+         # 標準化
+         Data[ Col ] = StandardScaler( ).fit_transform( Data[ Col ].values.reshape( -1, 1 ) )
+         
+         # 最大最小化
+         Data[ Col ] = MinMaxScaler( ).fit_transform( Data[ Col ].values.reshape( -1, 1 ) )
+         
+
+#### Day_020: 離群值的處理 
+捨去離群值：若離群值僅有少數幾筆資料時，此方法不至於對原始資料的分佈造成變化。
+
+         程式碼：
+         Col = ''            # 輸入欄位名稱
+         Upper_Bound =       # 資料的上限
+         Lower_Bound =       # 資料的下限
+         
+         keep_indexs = ( Data[ Col ] < Upper_Bound ) & ( Data[ Col ] > Lower_Bound )
+         Data = Data[ keep_indexs ]
+
+調整離群值：
+
+         程式碼：
+         Col = ''            # 輸入欄位名稱
+         
+         Data[ Col ] = Data[ Col ].clip( Lower_Bound, Upper_Bound ) # 將大於上限的數值調整成上限，小於下限的數值調整成下限
+         
+
+#### Day_021: 去偏態 
+偏態常出現於非負且可能為 0 的欄位(例如：價格、計數等)  
+
+自然對數(log)去偏：
+
+         程式碼：
+         Col = ''            # 輸入欄位名稱
+         Data[ Col ] = np.log1p( Data[ Col ] )     # y = log( 1 + x ) 可將 0 對應到 0
+
+分布去偏(boxcox)：
+
+         程式碼：
+         from scipy import stats
+         
+         Col = ''            # 輸入欄位名稱
+         Data[ Col ] = stats.boxcox( Data[ Col ], lambda )   
+         
+         # lambda = 0   : logarithmic transformation  log(X)  
+         # lambda = 0.5 : square root transformation  sqrt(X)          
+
+Reference: https://www.itread01.com/content/1543890427.html  
+
+
+#### Day_022: 標籤編碼(Label Encoding)、獨熱編碼(OneHot Encoding)  * 程式碼參考 Day_004
+類別型特徵建議採用標籤編碼，若該特徵重要性高且類別值少，則可考慮使用獨熱編碼。
+
+
+#### Day_023: 均值編碼(Mean Encoding) 
+利用目標值(Target)的平均值，取代類別型特徵。容易造成模型 overfitting!!
+
+         程式碼：
+         target_col = ''     # 輸入目標欄位名稱
+         Col = ''            # 輸入均值編碼的欄位名稱
+         
+         target_mean = Data.groupby( [ Col ] )[ 'Survived' ].mean( ).reset_index( )
+         target_mean = [ Col, f'{c}_mean' ]                                 
+
+
+#### Day_024: 計數編碼(Counting Encoding)、特徵雜湊(Feature Hash)   
+
+
 Day_025: 時間特徵分解( 年、月、日、時、分、秒 ) 及 週期循環特徵( 利用 sin 或 cos 函數執行 )  
 Day_026: 特徵組合( ex: 經緯度座標 )  
 Day_027: 特徵組合( Group by Encoding 群聚編碼 : 合成類別特徵與數值特徵 )  
