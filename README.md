@@ -396,45 +396,59 @@ Day_040: Lasso & Ridge Regression - 程式碼
          (1) Lasso = linear_model.Lasso( alpha =  )  
          (2) Ridge = linear_model.Ridge( alpha =  )  
   
-Day_041: 決策樹(Decision Tree)     
-Day_042: 決策樹(Decision Tree) - 程式碼     
+#### Day_041: 決策樹(Decision Tree)     
+ 
+         程式碼     
          from sklearn.tree import DecisionTreeClassifier, DecisionTreeRegressor    
          (1) 迴歸問題： DTR = DecisionTreeRegressor( )  
          (2) 分類問題： DTC = DecisionTreeClassifier( )  
   
    
-集成學習(Ensemble Learning): 可避免當決策樹足夠深時，容易導致過擬合(overfitting)的缺點   
-(i) Bagging 從原資料集中隨機做取後放回的採樣，分別在採樣的子集訓練模型 - 隨機森林(Random Forest)   
-(ii) Boosting 透過迭代訓練一系列的模型，下一個模型補強前一個模型的不足，每個模型的訓練樣本分佈由前一個模型的結果產生 - 梯度提升決策數(Gradient Boosting Decision Tree)
+### 集成學習(Ensemble Learning): 
+可避免當決策樹足夠深時，容易導致過擬合(overfitting)的缺點   
+   (i) Bagging 從原資料集中隨機做取後放回的採樣，分別在採樣的子集訓練模型 - 隨機森林(Random Forest)   
+   (ii) Boosting 透過迭代訓練一系列的模型，下一個模型補強前一個模型的不足，每個模型的訓練樣本分佈由前一個模型的結果產生 - 梯度提升決策數(Gradient Boosting Decision Tree)
 
-Day_043: 隨機森林(Random Forest)        
-Day_044: 隨機森林(Random Forest) - 程式碼   
+
+#### Day_043: 隨機森林(Random Forest)        
+
+         程式碼   
          from sklearn.ensemble import RandomForestClassifier, RandomForestRegressor    
          (1) 迴歸問題： RFR = RandomForestRegressor( )  
          (2) 分類問題： RFC = RandomForestClassifier( ) 
+
+
+#### Day_045 ~ Day_046: 梯度提升機(Grandient Boosting Machine)       
          
-Day_045: 梯度提升機(Grandient Boosting Machine)       
-Day_046: 梯度提升機(Grandient Boosting Machine) - 程式碼   
+         程式碼   
          from sklearn.ensemble import GradientBoostingClassifier, GradientBoostingRegressor   
          (1) 迴歸問題： GBR = GradientBoostingRegressor( )  
          (2) 分類問題： GBC = GradientBoostingClassifie( ) 
-                  
-Day_047: 參數調整(Fine-Tuning)  
+ 
+ 
+#### Day_047: 參數調整(Fine-Tuning)  
+         
+         程式碼：
          from sklearn.model_selection import GridSearchCV, RandomizedSearchCV  
-         (1) 網格搜尋(Grid Search)：GridSearchCV( )  
-         (2) 隨機搜尋(Random Search)：RandomizedSearchCV( )    
+         
+         # 網格搜尋(Grid Search)
+         GridSearchCV( )   
+         
+         # 隨機搜尋(Random Search) 
+         RandomizedSearchCV( )  
+         
          
 #### Day_049: 混合泛化(Blending)  
 對於相同的訓練集資料，結合多個/多種不同的分類模型，將每個模型的預測值加權合成，得出新的預測結果。若每個模型的權重相同，則亦稱投票泛化(Voting)。  
    註：於分類問題中，若我們想得到 lebal = 1 的預測機率，則可用 .predict_proba( data )[ :, 1 ]  得到機率值！！  
   
          
-#### Day_50: 堆疊泛化(Stacking)  
+#### Day_050: 堆疊泛化(Stacking)  
 不僅將多個/多種不同模型結合，且使用每個模型的預測值，作為新的特徵值。  
   
 
 ### 分群(Clustering)  
-#### Day_55: K-Mean  
+#### Day_055: K-Mean  
 將資料分成 k 個群簇(cluster)，使得在同一群簇中的資料彼此盡量相近，且不同群簇的資料盡量不同。  
         
         程式碼：
@@ -442,13 +456,13 @@ Day_047: 參數調整(Fine-Tuning)
         KMeans = KMeans( n_clusters, init, n_init )
         
         
-#### Day_56: 輪廓分析(Silhouette Analysis)  
+#### Day_056: 輪廓分析(Silhouette Analysis)  
 用來評估資料分群的適當性。  
 輪廓分數(Silhouette Score) = (b_i - a_i)/max{ b_i, a_i }，其中 a_i : 對任一筆資料，與其同一群簇資料的平均距離；b_i : 對任一筆資料，不同群簇的資料與其平均距離的最大值。  
    * 輪廓分數越大，表示越能表現每個群簇中資料點越近，且不同群簇彼此相距越遠的效果！！
    
    
-#### Day_57: 階層分群(Hierarchical Clustering)  
+#### Day_057: 階層分群(Hierarchical Clustering)  
 可在不定義分群個數只定義距離的情況做分群(Bottom-down)，但不適合應用於大量的資料上。 
         
         程式碼：  
@@ -457,11 +471,11 @@ Day_047: 參數調整(Fine-Tuning)
         HC.fix( data )
 
          
-#### Day_58: 2D 樣版資料集(2D Toy Dataset)  
+#### Day_058: 2D 樣版資料集(2D Toy Dataset)  
 利用圖形的視覺呈現而非量化(如：輪廓分析)，來評估非監督式模型的表現。  
         
         
-#### Day_59: 主成份分析(Principal Component Analysis, PCA)    
+#### Day_059: 主成份分析(Principal Component Analysis, PCA)    
 一種將資料降維到特定維度的方法，有助於加速機器學習演算法；降維後新特徵為舊特徵的線性組合，係一種線性降維的方法。   
 註：於監督式學習中，不建議在一開使就用 PCA ，因可能造成失去重要的特徵導致模型 underfitting。  
   
@@ -472,9 +486,9 @@ Day_047: 參數調整(Fine-Tuning)
         New_Features = PCA.transform( data )
         
         
-#### Day_60: 手寫辨識資料集(Modified National Institute of Standards and Technology Datasets, MNIST)    
+#### Day_060: 手寫辨識資料集(Modified National Institute of Standards and Technology Datasets, MNIST)    
 
-#### Day_61: t-SEN  
+#### Day_061: t-SEN  
 亦是一種降維方法，對於高維度的資料用 Gaussian 分布、低維度資料用 t 分布來近似，再透過 KL Divergence 計算其相似度，以梯度下降(Gradient Descent)求最佳解。
         
         程式碼：  
@@ -483,12 +497,12 @@ Day_047: 參數調整(Fine-Tuning)
         data_tSEN = tSEN.fit_transform( data)
         
         
-#### Day_62: 流形還原  
+#### Day_062: 流形還原  
 將高維度中相近的點，對應至低維度空間中，盡可能保持資料點彼此間的距離關係。比方說，若資料結構像瑞士卷一般，則流形還原就是將它攤開且鋪平。  
   
   
 ### 深度學習(Deep Learning)  
-#### Day_63 ~ Day_065:       
+#### Day_063 ~ Day_065:       
 (1) 批次大小(Batch Size): 越小，學習曲線較震盪，但收斂速度較快。    
 (2) 學習率(Learnng Rate): 越大，學習曲線較震盪，但收斂速度較快；但選擇過大時，可能造成無法收斂的情況。  
 (3) 正規化(Regularization): 在 L1/L2 正規化非深度學習上的效果較為明顯，而正規化參數較小才有效果。  
@@ -496,7 +510,7 @@ Day_047: 參數調整(Fine-Tuning)
    * 註：深度學習體驗平台 TensorFlow Playground  https://playground.tensorflow.org    
 
 
-#### Day_66: Keras  
+#### Day_066: Keras  
 安裝流程 
    * Step 1 : 開啟終端機  
    * Step 2 : 輸入  export PATH=~/anaconda/bin:$PATH ，顯示 Anaconda 環境變量  
