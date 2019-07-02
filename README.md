@@ -424,35 +424,32 @@ Day_047: 參數調整(Fine-Tuning)
          (1) 網格搜尋(Grid Search)：GridSearchCV( )  
          (2) 隨機搜尋(Random Search)：RandomizedSearchCV( )    
          
-Day_049: 混合泛化(Blending)  
-         對於相同的訓練集資料，結合多個/多種不同的分類模型，將每個模型的預測值加權合成，得出新的預測結果。  
-         若每個模型的權重相同，則亦稱投票泛化(Voting)。  
-  
-註：於分類問題中，若我們想得到 lebal = 1 的預測機率，則可用 .predict_proba( data )[ :, 1 ]  得到機率值！！  
+#### Day_049: 混合泛化(Blending)  
+對於相同的訓練集資料，結合多個/多種不同的分類模型，將每個模型的預測值加權合成，得出新的預測結果。若每個模型的權重相同，則亦稱投票泛化(Voting)。  
+   註：於分類問題中，若我們想得到 lebal = 1 的預測機率，則可用 .predict_proba( data )[ :, 1 ]  得到機率值！！  
   
          
-Day_50: 堆疊泛化(Stacking)  
-        不僅將多個/多種不同模型結合，且使用每個模型的預測值，作為新的特徵值。  
+#### Day_50: 堆疊泛化(Stacking)  
+不僅將多個/多種不同模型結合，且使用每個模型的預測值，作為新的特徵值。  
   
 
-分群(Clustering)  
-Day_55: K-Mean  
-        將資料分成 k 個群簇(cluster)，使得在同一群簇中的資料彼此盡量相近，且不同群簇的資料盡量不同。  
+### 分群(Clustering)  
+#### Day_55: K-Mean  
+將資料分成 k 個群簇(cluster)，使得在同一群簇中的資料彼此盡量相近，且不同群簇的資料盡量不同。  
         
         程式碼：
         from sklearn.cluster import KMeans
         KMeans = KMeans( n_clusters, init, n_init )
         
         
-Day_56: 輪廓分析(Silhouette Analysis)  
-        用來評估資料分群的適當性。  
-        (1) 輪廓分數(Silhouette Score) = (b_i - a_i)/max{ b_i, a_i },   
-        其中 a_i : 對任一筆資料，與其同一群簇資料的平均距離；b_i : 對任一筆資料，不同群簇的資料與其平均距離的最大值。  
-        ＊ 輪廓分數越大，表示越能表現每個群簇中資料點越近，且不同群簇彼此相距越遠的效果！！
+#### Day_56: 輪廓分析(Silhouette Analysis)  
+用來評估資料分群的適當性。  
+輪廓分數(Silhouette Score) = (b_i - a_i)/max{ b_i, a_i }，其中 a_i : 對任一筆資料，與其同一群簇資料的平均距離；b_i : 對任一筆資料，不同群簇的資料與其平均距離的最大值。  
+   * 輪廓分數越大，表示越能表現每個群簇中資料點越近，且不同群簇彼此相距越遠的效果！！
    
    
-Day_57: 階層分群(Hierarchical Clustering)  
-        可在不定義分群個數只定義距離的情況做分群(Bottom-down)，但不適合應用於大量的資料上。 
+#### Day_57: 階層分群(Hierarchical Clustering)  
+可在不定義分群個數只定義距離的情況做分群(Bottom-down)，但不適合應用於大量的資料上。 
         
         程式碼：  
         from sklearn.cluster import AgglomerativeClustering
@@ -460,13 +457,13 @@ Day_57: 階層分群(Hierarchical Clustering)
         HC.fix( data )
 
          
-Day_58: 2D 樣版資料集(2D Toy Dataset)  
-        利用圖形的視覺呈現而非量化(如：輪廓分析)，來評估非監督式模型的表現。  
+#### Day_58: 2D 樣版資料集(2D Toy Dataset)  
+利用圖形的視覺呈現而非量化(如：輪廓分析)，來評估非監督式模型的表現。  
         
         
-Day_59: 主成份分析(Principal Component Analysis, PCA)    
-        一種將資料降維到特定維度的方法，有助於加速機器學習演算法；降維後新特徵為舊特徵的線性組合，係一種線性降維的方法。  
-        註：於監督式學習中，不建議在一開使就用 PCA ，因可能造成失去重要的特徵導致模型 underfitting。  
+#### Day_59: 主成份分析(Principal Component Analysis, PCA)    
+一種將資料降維到特定維度的方法，有助於加速機器學習演算法；降維後新特徵為舊特徵的線性組合，係一種線性降維的方法。   
+註：於監督式學習中，不建議在一開使就用 PCA ，因可能造成失去重要的特徵導致模型 underfitting。  
   
         程式碼：  
         from sklearn import decomposition
@@ -475,10 +472,10 @@ Day_59: 主成份分析(Principal Component Analysis, PCA)
         New_Features = PCA.transform( data )
         
         
-Day_60: 手寫辨識資料集(Modified National Institute of Standards and Technology Datasets, MNIST)    
+#### Day_60: 手寫辨識資料集(Modified National Institute of Standards and Technology Datasets, MNIST)    
 
-Day_61: t-SEN  
-        亦是一種降維方法，對於高維度的資料用 Gaussian 分布、低維度資料用 t 分布來近似，再透過 KL Divergence 計算其相似度，以梯度下降(Gradient Descent)求最佳解。
+#### Day_61: t-SEN  
+亦是一種降維方法，對於高維度的資料用 Gaussian 分布、低維度資料用 t 分布來近似，再透過 KL Divergence 計算其相似度，以梯度下降(Gradient Descent)求最佳解。
         
         程式碼：  
         from sklearn import manifold
@@ -508,10 +505,10 @@ Day_61: t-SEN
    * Step 5 : 輸入  pip install tensorflow==2.0.0-beta1 ，安裝 Tensorflow
    * Step 6 : 輸入  pip install --ignore-installed --upgrade keras ，安裝 Keras  
    * Step 7 : 輸入  conda env list ，確認環境   
-     
-   ** Reference :   
-      TensorFlow https://www.tensorflow.org  
-      Keras      https://keras.io
+   
+Reference :   
+(1) TensorFlow https://www.tensorflow.org  
+(2) Keras      https://keras.io
 
 
 
