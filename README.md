@@ -363,38 +363,47 @@ Day_028: 特徵篩選
   
 Day_029: 樹狀模型的特徵重要性( estimator.feature_importances_ )  
 Day_030: 分類預測模型的特徵優化( 隨機森林 Random Forset + 葉編碼 Leaf Encoding + Logistic Regression )  
-Day_034: 切分 訓練集/測試集 資料    
-         (1) 資料切分 : train_test_split() 函數   
-         (2) 交叉採樣 : KFold( n_splits = ,shuffle = False ) 函數   
-         ＊＊ n_splits 為等份數；shuffle = False 表示每次劃分的結果相同  
-         註：當樣本不均衡時，須搭配運用的函數 np.where()、np.concatenate()  
 
-Day_035: 模型的選擇 by 預測類型  
-         (1) 迴歸問題：預測的目標為實數  
-         (2) 分類問題：預測的目標為類別  
-         (3) 二元分類(binary-class): 瑕疵 vs 正常  
-         (4) 多元分類(multi-class): 手寫辨識1~9 ；    
-         (5) 多標籤(multi-label): 如天氣預測多雲時晴  
-         (6) 迴歸問題可轉化成分類問題
+
+#### Day_034: 切分 訓練集/測試集 資料    
+(1) 資料切分 : train_test_split() 函數   
+(2) 交叉採樣 : KFold( n_splits = ,shuffle = False ) 函數   
+   * n_splits 為等份數；shuffle = False 表示每次劃分的結果相同  
+ 
+ 註：當樣本不均衡時，須搭配運用的函數 np.where()、np.concatenate()  
+
+
+#### Day_035: 模型的選擇 by 預測類型  
+(1) 迴歸問題：預測的目標為實數  
+(2) 分類問題：預測的目標為類別  
+(3) 二元分類(binary-class): 瑕疵 vs 正常  
+(4) 多元分類(multi-class): 手寫辨識1~9 ；    
+(5) 多標籤(multi-label): 如天氣預測多雲時晴  
+(6) 迴歸問題可轉化成分類問題
+
+
+#### Day_036: 模型的評估指標  
+(1) 迴歸問題：MAE(Mean Absolute Error)、MSE(Mean Square Error)、R-Square  
+(2) 分類問題：AUC(Area Under Curve)、Precision、Recall、F1-Score  
   
-Day_036: 模型的評估指標  
-         (1) 迴歸問題：MAE(Mean Absolute Error)、MSE(Mean Square Error)、R-Square  
-         (2) 分類問題：AUC(Area Under Curve)、Precision、Recall、F1-Score  
   
-Day_037: 線性迴歸(Linear Regression) v.s. 邏輯斯迴歸(Logistic Regression)  
-Day_038: 線性迴歸 ＆ 邏輯斯迴歸 - 程式碼    
+#### Day_037: 線性迴歸(Linear Regression) & 邏輯斯迴歸(Logistic Regression)  
+
+         程式碼    
          from sklearn import linear_model  
          (1) 線性：Linear = linear_model.LinearRegression( )  
          (2) 邏輯斯：Logistic = linear_model.LogisticRegression( )   
-         
-Day_039: Lasso & Ridge Regression  
-         (1) 正則化(Regularization): 避免模型過擬合(over-fitting)  
-         (2) 正則化方法：Lasso(L1)、Ridge Regression(L2)   
+     
+     
+#### Day_039: Lasso & Ridge Regression  
+(1) 正則化(Regularization): 避免模型過擬合(over-fitting)  
+(2) 正則化方法：Lasso(L1)、Ridge Regression(L2)   
 
-Day_040: Lasso & Ridge Regression - 程式碼     
+         程式碼     
          from sklearn import linear_model  
          (1) Lasso = linear_model.Lasso( alpha =  )  
          (2) Ridge = linear_model.Ridge( alpha =  )  
+  
   
 #### Day_041: 決策樹(Decision Tree)     
  
@@ -406,8 +415,8 @@ Day_040: Lasso & Ridge Regression - 程式碼
    
 ### 集成學習(Ensemble Learning): 
 可避免當決策樹足夠深時，容易導致過擬合(overfitting)的缺點   
->> (i) Bagging 從原資料集中隨機做取後放回的採樣，分別在採樣的子集訓練模型 - 隨機森林(Random Forest)   
->> (ii) Boosting 透過迭代訓練一系列的模型，下一個模型補強前一個模型的不足，每個模型的訓練樣本分佈由前一個模型的結果產生 - 梯度提升決策數(Gradient Boosting Decision Tree)
+> (i) Bagging 從原資料集中隨機做取後放回的採樣，分別在採樣的子集訓練模型 - 隨機森林(Random Forest)   
+> (ii) Boosting 透過迭代訓練一系列的模型，下一個模型補強前一個模型的不足，每個模型的訓練樣本分佈由前一個模型的結果產生 - 梯度提升決策數(Gradient Boosting Decision Tree)
 
 
 #### Day_043: 隨機森林(Random Forest)        
@@ -507,7 +516,7 @@ Day_040: Lasso & Ridge Regression - 程式碼
 (2) 學習率(Learnng Rate): 越大，學習曲線較震盪，但收斂速度較快；但選擇過大時，可能造成無法收斂的情況。  
 (3) 正規化(Regularization): 在 L1/L2 正規化非深度學習上的效果較為明顯，而正規化參數較小才有效果。  
 (4) 隱藏層(Hidden Layer)的層數不多時，啟動函數(Activation Function)選用 Sigmoid / Tanh 的效果較 Relu 好。但實務上，Relu 所需的計算時間短，而 Sigmoid 需大量的計算時間。  
-   * 註：深度學習體驗平台 TensorFlow Playground  https://playground.tensorflow.org    
+   * 註：深度學習體驗平台 [TensorFlow Playground](https://playground.tensorflow.org)    
 
 
 #### Day_066: Keras  
@@ -521,8 +530,8 @@ Day_040: Lasso & Ridge Regression - 程式碼
    * Step 7 : 輸入  conda env list ，確認環境   
    
 Reference :   
-(1) TensorFlow https://www.tensorflow.org  
-(2) Keras      https://keras.io
+(1) [TensorFlow](https://www.tensorflow.org)  
+(2) [Keras](https://keras.io)
 
 
 
