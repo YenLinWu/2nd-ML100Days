@@ -406,8 +406,8 @@ Day_040: Lasso & Ridge Regression - 程式碼
    
 ### 集成學習(Ensemble Learning): 
 可避免當決策樹足夠深時，容易導致過擬合(overfitting)的缺點   
-   (i) Bagging 從原資料集中隨機做取後放回的採樣，分別在採樣的子集訓練模型 - 隨機森林(Random Forest)   
-   (ii) Boosting 透過迭代訓練一系列的模型，下一個模型補強前一個模型的不足，每個模型的訓練樣本分佈由前一個模型的結果產生 - 梯度提升決策數(Gradient Boosting Decision Tree)
+>> (i) Bagging 從原資料集中隨機做取後放回的採樣，分別在採樣的子集訓練模型 - 隨機森林(Random Forest)   
+>> (ii) Boosting 透過迭代訓練一系列的模型，下一個模型補強前一個模型的不足，每個模型的訓練樣本分佈由前一個模型的結果產生 - 梯度提升決策數(Gradient Boosting Decision Tree)
 
 
 #### Day_043: 隨機森林(Random Forest)        
