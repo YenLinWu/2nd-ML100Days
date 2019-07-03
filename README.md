@@ -263,10 +263,10 @@ Heatmap 常用於呈現特徵間的相關性，也可用於呈現不同條件下
 
 
 #### Day_018: 特徵的類型
-   (1) 數值型  
-   (2) 類別型  
-   (3) 二元特徵：可視為數值型也可視為類別型(例：True = 1/ False = 0)  
-   (4) 排序型：例如名次、百分等級等有大小關係，通常以數值型特徵處理，因若視為類別型處理，將會失去排序的資訊。  
+(1) 數值型  
+(2) 類別型  
+(3) 二元特徵：可視為數值型也可視為類別型(例：True = 1/ False = 0)  
+(4) 排序型：例如名次、百分等級等有大小關係，通常以數值型特徵處理，因若視為類別型處理，將會失去排序的資訊。  
 
 
 #### Day_019: 數值型特徵  
@@ -524,7 +524,7 @@ Reference: https://www.itread01.com/content/1543890427.html
 
 
 #### Day_066: Keras  
-安裝流程 
+安裝流程 for macOS 
    * Step 1 : 開啟終端機  
    * Step 2 : 輸入  export PATH=~/anaconda/bin:$PATH ，顯示 Anaconda 環境變量  
    * Step 3 : 輸入  conda create -n tensorflow python=3.7 anaconda ，建立 Anaconda 虛擬環境
@@ -538,12 +538,76 @@ Reference :
 (2) [Keras](https://keras.io)
 
 
-#### Day_067: Keras 內建資料集 
+#### Day_067: Keras 內建資料集  
 
 
+#### Day_068: Keras 模型搭建  
+卷積神經網絡(CNN)  
 
+        程式碼：  
+        import keras
+        from keras.datasets import cifar10  # Keras 內建資料集
+        from keras.utils import np_utils    # OneHot Encoding  
 
+        # Sequential( ) : 空的模型物件，用於建立一系列模型
+        from keras.models import Sequential, load_model              
 
+        # Conv2D : 平面的卷積模組
+        from keras.layers import Conv2D                     
+
+        # MaxPooling2D : 平面池化模組
+        from keras.layers import MaxPooling2D            
+
+        # Flatten：為了全連接層運算，建立平坦層
+        from keras.layers import Flatten                              
+
+        # Dense : 建立全連接層(fully-connected layer)；Activation：激活函數；Dropout：隨機拋棄避免過擬合
+        from keras.layers import Dense,  Activation, Dropout  
+        
+        
+        # 資料預處理
+        # step 1 : 陣列資料轉換
+        # num1 = 資料圖片的張數；num2 = 解析度；num3 = 解析度；num4 = 色版數目( 例如：RGB 為 3 )  
+        x_train = x_train_image.reshape( num1, num2, num3, num4 ).astype( 'float32' )  
+        x_test = x_test_image.reshape( num1, num2, num3, num4 ).astype( 'float32' )  
+        
+        # step 2 : 資料標準化(Normalization)  
+        x_train_normalize = x_train / 255  # 除以畫素最大值 255
+        x_test_normalize = x_test / 255    # 除以畫素最大值 255
+        
+        # step 3 : 獨熱編碼(OneHot Encoding)  
+        y_train_onehot = np_utils.to_categorical( y_train_label )
+        y_test_onehot = np_utils.to_categorical( y_test_label )
+        
+        
+        # 建立 CNN 模型
+        model = Sequential( )
+
+        model.add( Conv2D( filters,                        # filter( 又稱 kernel ) 的個數  
+                           kernel_size = ( , ),            # filter( 又稱 kernel ) 的個尺寸
+                           padding = 'same',               # padding : 邊界周圍補 0 且 filter 的步伐(stride) 為 1
+                           input_shape = x_train.shape[ 1: ] )
+               )
+        
+        model.add( MaxPooling2D( pool_size = ( 2, 2 ) ) )  # 最大池化層( 池化核心 2 * 2)
+
+        model.add( Flatten( ) )              # 資料扁平化，為了後續全連接層(fully-connected layer)運算
+        model.add( Dense( 512 ) )            # 建立有 512 個神經元的隱藏層
+        model.add( Activation( 'relu' ) )    # 激活函數
+        model.add( Dropout( 0.5 ) )          # 隨機停止 50% 的神經元運作
+        model.add( Dense( 256 ) )            # 建立有 256 個神經元的隱藏層
+        model.add( Activation( 'tanh' ) )    # 激活函數
+        model.add( Dropout( 0.7 ) )          # 隨機停止 70% 的神經元運作
+        model.add( Dense( num_classes ) )    # num_classes : 分類數目
+        model.add( Activation( 'softmax' ) ) # 標準化指數層(softmax layer)
+        
+        
+Reference :   
+(1) [Convolutional Layers](https://keras.io/layers/convolutional/)  
+(2) [Pooling Layers](https://keras.io/layers/pooling/)  
+(3) [Activations](https://keras.io/activations/)  
+(4) [Using the Keras Flatten Operation in CNN Models with Code Examples](https://missinglink.ai/guides/deep-learning-frameworks/using-keras-flatten-operation-cnn-models-code-examples/)        
+(5) [使用 Keras 卷積神經網路 (CNN) 辨識手寫數字](http://yhhuang1966.blogspot.com/2018/04/keras-cnn.html)  
 
 
     
