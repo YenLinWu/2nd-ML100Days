@@ -225,7 +225,7 @@ Heatmap 常用於呈現特徵間的相關性，也可用於呈現不同條件下
          sns.heatmap( Data.corr( ), cmap = plt.cm.RdYlBu_r, annot = True, fmt = '.1f', ax = axs )
          plt.show( )
           
-   註 1：隨機生成數值落於 $( a, b )$ 的隨機矩陣
+   註 1：隨機生成數值落於 ( a, b ) 的隨機矩陣
          
          程式碼：
          Matrix = ( b - a ) * np.random.random( ( nrow, ncol ) ) + a 
@@ -352,17 +352,21 @@ Reference: https://www.itread01.com/content/1543890427.html
 
 #### Day_024: 計數編碼(Counting Encoding)、特徵雜湊(Feature Hash)   
 
+#### Day_025: 時間特徵分解( 年、月、日、時、分、秒 ) 及 週期循環特徵( 利用 sin 或 cos 函數執行 )  
 
-Day_025: 時間特徵分解( 年、月、日、時、分、秒 ) 及 週期循環特徵( 利用 sin 或 cos 函數執行 )  
-Day_026: 特徵組合( ex: 經緯度座標 )  
-Day_027: 特徵組合( Group by Encoding 群聚編碼 : 合成類別特徵與數值特徵 )  
-Day_028: 特徵篩選    
-         (1) 相關係數過濾法 : 利用 corr() + list() + pop() 函數   
-         (2) L1-Embedding(Lasso Regression Embedding) : 利用 Lasso( alpha = ) 函數  
-         (3) GDBT(梯度提升樹) Embedding    
+#### Day_026: 特徵組合( ex: 經緯度座標 )  
+
+#### Day_027: 特徵組合( Group by Encoding 群聚編碼 : 合成類別特徵與數值特徵 )  
+
+#### Day_028: 特徵篩選    
+(1) 相關係數過濾法 : 利用 corr() + list() + pop() 函數   
+(2) L1-Embedding(Lasso Regression Embedding) : 利用 Lasso( alpha = ) 函數  
+(3) GDBT(梯度提升樹) Embedding    
   
-Day_029: 樹狀模型的特徵重要性( estimator.feature_importances_ )  
-Day_030: 分類預測模型的特徵優化( 隨機森林 Random Forset + 葉編碼 Leaf Encoding + Logistic Regression )  
+#### Day_029: 樹狀模型的特徵重要性( estimator.feature_importances_ )  
+
+
+#### Day_030: 分類預測模型的特徵優化( 隨機森林 Random Forset + 葉編碼 Leaf Encoding + Logistic Regression )  
 
 
 #### Day_034: 切分 訓練集/測試集 資料    
@@ -532,6 +536,11 @@ Day_030: 分類預測模型的特徵優化( 隨機森林 Random Forset + 葉編�
 Reference :   
 (1) [TensorFlow](https://www.tensorflow.org)  
 (2) [Keras](https://keras.io)
+
+
+#### Day_067: Keras 內建資料集 
+
+
 
 
 
