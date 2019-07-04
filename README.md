@@ -657,7 +657,7 @@ Reference :
 Reference :   
 (1) [Getting started with the Keras functional API](https://keras.io/getting-started/functional-api-guide/)  
 (2) [Embedding](https://keras.io/layers/embeddings/)   
-(3) [Merge Layers](https://keras.io/layers/merge/)
+(3) [Merge Layers](https://keras.io/layers/merge/)  
 (4) [如何使用 Keras 函數式 API 進行深度學習](https://zhuanlan.zhihu.com/p/53933876)
 
     
