@@ -544,7 +544,7 @@ Reference :
 #### Day_068: Keras 模型搭建  
 卷積神經網絡(CNN)  
 
-        程式碼：  
+        範例程式碼：  
         import keras
         from keras.datasets import cifar10  # Keras 內建資料集
         from keras.utils import np_utils    # OneHot Encoding  
@@ -607,11 +607,59 @@ Reference :
 (2) [Pooling Layers](https://keras.io/layers/pooling/)  
 (3) [Activations](https://keras.io/activations/)  
 (4) [Using the Keras Flatten Operation in CNN Models with Code Examples](https://missinglink.ai/guides/deep-learning-frameworks/using-keras-flatten-operation-cnn-models-code-examples/)        
-(5) [使用 Keras 卷積神經網路 (CNN) 辨識手寫數字](http://yhhuang1966.blogspot.com/2018/04/keras-cnn.html)  
+(5) [使用 Keras 卷積神經網路 (CNN) 辨識手寫數字](http://yhhuang1966.blogspot.com/2018/04/keras-cnn.html)   
 
 
+#### Day_069: Keras 函數式 API  
+定義複雜模型(例如：多個輸出模型、具有共享層的模型等)的方法  
+
+        範例程式碼：  
+        import keras
+        from keras.datasets import cifar10  # Keras 內建資料集
+        
+        from keras.layers import Input, Embedding, LSTM, Dense  
+        from keras.utils import np_utils    # OneHot Encoding 
+        from keras.models import Model 
+        
+        import matplotlib.pyplot as plt
+        from keras.utils import plot_model
+        from IPython.display import Image
+        
+        
+        Main_Input = Input( shape = ( num1, ), dtype = 'int32', name = 'Main_Input' )  
+        
+        # Embedding Layers ( This layer can only be used as the first layer in a model. )
+        Embedding = Embedding( output_dim = num2 , input_dim = num3, input_length = num4 )( Main_Input )
+        
+        # LSTM Layer
+        LSTM_output = LSTM( 32 )( Embedding )  
+        
+        Input_2 = Input( shape = ( num5, ), name = 'Input_2' )
+        Merge_Layer = keras.layers.concatenate( [ LSTM_output, Input_2 ] )  
+        
+        # 堆疊多個全連接網路層
+        Hidden1 = Dense( 64, activation = 'relu', name = 'Hidden1' )( Merge_Layer )
+        Hidden2 = Dense( 64, activation = 'relu', name = 'Hidden2' )( Hidden1 )  
+        
+        Main_Output = Dense( 1, activation = 'sigmoid', name = 'Main_Output' )( Hidden2 )  
+        
+        # 宣告 MODEL API, 分別採用自行定義的 Input/Output Layer
+        model = Model( inputs = [ Main_Input, Input_2 ], outputs = Main_Output )
+        
+        # 模型結構總攬
+        model.summary( )
+        
+        # 模型網絡的流程圖  
+        plot_model( model, to_file = 'Model_Name.png' )
+        Image( 'Model_Name.png' )
+        
     
-    
+Reference :   
+(1) [Getting started with the Keras functional API](https://keras.io/getting-started/functional-api-guide/)  
+(2) [Embedding](https://keras.io/layers/embeddings/)   
+(3) [Merge Layers](https://keras.io/layers/merge/)  
+(4) [如何使用 Keras 函數式 API 進行深度學習](https://zhuanlan.zhihu.com/p/53933876)
+
     
 
         
