@@ -736,6 +736,6 @@ Reference :
 
 
 Reference :   
-(1) [Losses](https://keras.io/losses/)
+(1) [Losses](https://keras.io/losses/)  
 (2) [Epoch vs Batch Size vs Iterations](https://towardsdatascience.com/epoch-vs-iterations-vs-batch-size-4dfb9c7ce9c9)  
 
