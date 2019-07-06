@@ -703,7 +703,7 @@ Reference :
         model.add( Dense( 64, kernel_initializer = 'normal', activation = 'tanh', name = 'Hidden_2' ) )     # 建立有 64 個神經元的隱藏層
 
         # 3.輸出層
-        model.add( Dense( units = 10,                           # 神經元數量
+        model.add( Dense( units = 10,                       # 神經元數量
                           kernel_initializer = 'normal',    # 初始化權重的方法
                           activation = 'softmax', 
                           name = 'Output_Layer'
@@ -733,4 +733,9 @@ Reference :
           prediction = model.predict_classes( x_Test_normalize )
           # 混淆矩陣
           pd.crosstab( y_test_label, prediction, rownames = [ 'label' ], colnames = [ 'predict' ] )
-          
+
+
+Reference :   
+(1) [Losses](https://keras.io/losses/)
+(1) [Epoch vs Batch Size vs Iterations](https://towardsdatascience.com/epoch-vs-iterations-vs-batch-size-4dfb9c7ce9c9)  
+
