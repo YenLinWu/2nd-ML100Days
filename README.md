@@ -739,3 +739,15 @@ Reference :
 (1) [Losses](https://keras.io/losses/)  
 (2) [Epoch vs Batch Size vs Iterations](https://towardsdatascience.com/epoch-vs-iterations-vs-batch-size-4dfb9c7ce9c9)  
 
+
+#### Day_071: 損失函數(Loss Function)  
+損失函數即為預測值與實際值的落差，於迴歸問題中稱為殘差(Residual)，於分類問題中稱為錯誤率(Error Rate)，我們希望將損失函數的結果最小化。  
+
+(1) 迴歸問題：mean_squared_error、mean_absolute_error、sparse_categorical_crossentropy
+> 註：在梯度下降的過程中，Cross Entropy 的計算速度較 MSE/MAE 快，故使用 Cross Entropy 作為損失函數。   
+
+(2) 分類問題：categorical_crossentropy、binary_crossentropy(二分類問題)  
+
+
+
+
