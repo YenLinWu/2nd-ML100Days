@@ -661,11 +661,81 @@ Reference :
 (4) [如何使用 Keras 函數式 API 進行深度學習](https://zhuanlan.zhihu.com/p/53933876)
 
     
+#### Day_070: 多層感知器(Multi-layer Perceptron)  
+為深度神經網絡的一種特例，係一種向前傳播遞迴的類神經網絡，且利用向後傳播的技術達到學習的目標。
+        
+        範例程式碼：  
+        import keras
+        from keras.datasets import mnist    # Keras 手寫辨識資料集  
+        
+        from keras.utils import np_utils    # OneHot Encoding  
+        from keras.models import Sequential
+        from keras.layers import Dense
+        import matplotlib.pyplot as plt  
+        
+        # 載入資料
+        ( x_train_image, y_train_label ), ( x_test_image, y_test_label ) = mnist.load_data( )
+        
+        x_Train = x_train_image.reshape( 60000, 784 ).astype( 'float32' )  # 784 = 28 * 28
+        x_Test = x_test_image.reshape( 10000, 784 ).astype( 'float32' )
+        
+        # 資料標準化
+        x_Train_normalize = x_Train / 255
+        x_Test_normalize = x_Test / 255
+        
+        # OneHot Encoding
+        y_Train_OneHot = np_utils.to_categorical( y_train_label ) 
+        y_Test_OneHot = np_utils.to_categorical( y_test_label )
+        
+        # 建立模型
+        model = Sequential( )
 
-        
-        
-        
-        
-        
-        
-        
+        # 1.輸入層
+        model.add( Dense( units = 256,                     # 神經元數量 
+                          input_shape = ( 784, ), 
+                          kernel_initializer = 'normal',   # 初始化權重的方法
+                          activation = 'relu', 
+                          name = 'Input_layer'
+                           ) )
+
+        # 2.隱藏層
+        model.add( Dense( 128, kernel_initializer = 'normal', activation = 'relu', name = 'Hidden_1' ) )    # 建立有 128 個神經元的隱藏層
+        model.add( Dense( 64, kernel_initializer = 'normal', activation = 'tanh', name = 'Hidden_2' ) )     # 建立有 64 個神經元的隱藏層
+
+        # 3.輸出層
+        model.add( Dense( units = 10,                       # 神經元數量
+                          kernel_initializer = 'normal',    # 初始化權重的方法
+                          activation = 'softmax', 
+                          name = 'Output_Layer'
+                           ) )
+                           
+         # 模型摘要
+         print( model.summary( ) )
+         
+         # 訓練模型
+         model.compile( loss = 'categorical_crossentropy',   # 損失函數(Loss Function)
+                        optimizer = 'adam',                  # 最佳化的演算法
+                        metrics = [ 'accuracy' ]             # 模型成效的評量指標
+                        )
+         train_history = model.fit( x = x_Train_normalize,
+                                    y = y_Train_OneHot, 
+                                    validation_split = 0.2,   # 驗證集佔訓練集的比例
+                                    epochs = 10,              # 模擬次數
+                                    batch_size = 20,          # 每批次的資料筆數
+                                    verbose = 1               # 顯示模型訓練進度 
+                                    )
+                                    
+          # 評估模型
+          scores = model.evaluate( x_Test_normalize, y_Test_OneHot )
+          print( 'accuracy = ', scores[1] )  
+          
+          # 測試集資料預測
+          prediction = model.predict_classes( x_Test_normalize )
+          # 混淆矩陣
+          pd.crosstab( y_test_label, prediction, rownames = [ 'label' ], colnames = [ 'predict' ] )
+
+
+Reference :   
+(1) [Losses](https://keras.io/losses/)  
+(2) [Epoch vs Batch Size vs Iterations](https://towardsdatascience.com/epoch-vs-iterations-vs-batch-size-4dfb9c7ce9c9)  
+
