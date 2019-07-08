@@ -749,5 +749,22 @@ Reference :
 (2) 分類問題：categorical_crossentropy、binary_crossentropy(二分類問題)  
 
 
+#### Day_072: 激活函數(Activation Function)  
+(1) sigmoid: 存有梯度消失問題(Vanishing)Gradient Problem)，導致模型學習效率慢，不適合用於 Layers 多的神經網絡中。  
+(2) tanh: 與 sigmoid 相同存有梯度消失問題，也不適合用於 Layers 多的神經網絡中。   
+(3) ReLU(Rectified Linear Unit): 較為通用的激活函數，但建議只用於隱藏層(Hidden Layers)中，且須注意設置學習率(Learning Rate)，避免神經網絡中產生過多不作用的神經元，此情況下稱為 Dying ReLU。註：Leaky ReLU 及 PReLU 可修正此問題。  
+  
+   * 選擇激活函數的原則  
+   ** 分類問題：一般在輸出層使用 softmax、隱藏層使用 sigmoid 函數，且損失函數使用交叉熵(Cross Entropy)損失函數，效果會較佳。  
+   ** 於 CNN 模型中，ReLU 函數對於梯度消失問題有較明顯程度的解決。    
+
+
+#### Day_073: 梯度下降(Gradient Descent)   
+為一優化訓練模型的演算法。  
+
+   * 避免產生局部極小(Local Minima)  
+   於訓練神經網絡模型時，通常剛開始訓練時會使用較大的學習率，隨著訓練的進行，學習率將慢慢逐漸地減小，即每次迭代時減少學習率的大小。  
+   
+
 
 
