@@ -594,10 +594,10 @@ Reference :
         model.add( Flatten( ) )              # 資料扁平化，為了後續全連接層(fully-connected layer)運算
         model.add( Dense( 512 ) )            # 建立有 512 個神經元的隱藏層
         model.add( Activation( 'relu' ) )    # 激活函數
-        model.add( Dropout( 0.5 ) )          # 隨機停止 50% 的神經元運作
+        model.add( Dropout( rate = 0.5 ) )   # 隨機停止 50% 的神經元運作
         model.add( Dense( 256 ) )            # 建立有 256 個神經元的隱藏層
         model.add( Activation( 'tanh' ) )    # 激活函數
-        model.add( Dropout( 0.7 ) )          # 隨機停止 70% 的神經元運作
+        model.add( Dropout( rate = 0.7 ) )   # 隨機停止 70% 的神經元運作
         model.add( Dense( num_classes ) )    # num_classes : 分類數目
         model.add( Activation( 'softmax' ) ) # 標準化指數層(softmax layer)
         
