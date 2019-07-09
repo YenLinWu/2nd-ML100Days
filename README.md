@@ -758,13 +758,25 @@ Reference :
    ** 分類問題：一般在輸出層使用 softmax、隱藏層使用 sigmoid 函數，且損失函數使用交叉熵(Cross Entropy)損失函數，效果會較佳。  
    ** 於 CNN 模型中，ReLU 函數對於梯度消失問題有較明顯程度的解決。    
 
-
-#### Day_073: 梯度下降(Gradient Descent)   
-為一優化訓練模型的演算法。  
+ 
+#### Day_073 ~ Day_074: 梯度下降(Gradient Descent)   
+為一優化模型訓練過程的演算法。在找尋損失函數(Loss Function)最小值的過程中，利用調節學習率(Learning Rate)來控制函數收斂到最小值的速度。   
 
    * 避免產生局部極小(Local Minima)  
-   於訓練神經網絡模型時，通常剛開始訓練時會使用較大的學習率，隨著訓練的進行，學習率將慢慢逐漸地減小，即每次迭代時減少學習率的大小。  
+      於訓練神經網絡模型時，通常剛開始訓練時會使用較大的學習率，隨著訓練的進行，學習率將慢慢逐漸地減小，即每次迭代時減少學習率的大小。  
+      <img src = 'http://chart.googleapis.com/chart?cht=tx&chl= lr_{i} = \frac{ lr }{ ( 1 %2B i \times \textrm{Decay Rate} ) } ' >  
+      其中，lr 為初始學習率，i 為迭代數。  
+
+最佳化的方法：  
+(1) 準確率梯度下降法(Stochastic Gradient Descent, sgd): 固定單一學習率進行迭代  
+(2) Momentum: 迭代過程中，於 sgd 迭代公式中新增一速度項  
+(3) Adagrad: 隨著學習過程縮小學習率  
+(4) Adam: 融合 Momentum 及 Adagrad   
    
+   
+Reference :   
+(1) [Optimizers](https://keras.io/optimizers/)   
+(2) [Learning Rate Decay 技巧介紹](https://zhuanlan.zhihu.com/p/32923584)  
 
 
 
