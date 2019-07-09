@@ -776,7 +776,8 @@ Reference :
    
 Reference :   
 (1) [Optimizers](https://keras.io/optimizers/)   
-(2) [Learning Rate Decay 技巧介紹](https://zhuanlan.zhihu.com/p/32923584)  
+(2) [[機器學習ML NOTE]SGD, Momentum, AdaGrad, Adam Optimizer](https://medium.com/雞雞與兔兔的工程世界/機器學習ml-note-sgd-momentum-adagrad-adam-optimizer-f20568c968db)  
+(3) [Learning Rate Decay 技巧介紹](https://zhuanlan.zhihu.com/p/32923584)  
 
 
 
