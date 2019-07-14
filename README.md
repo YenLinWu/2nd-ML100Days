@@ -767,7 +767,7 @@ Reference :
       <img src = 'http://chart.googleapis.com/chart?cht=tx&chl= lr_{i} = \frac{ lr }{ ( 1 %2B i \times \textrm{Decay Rate} ) } ' >  
       其中，lr 為初始學習率，i 為迭代數。  
 
-最佳化的方法：  
+最佳化的方法(程式碼參考 Day_076)：  
 (1) 準確率梯度下降法(Stochastic Gradient Descent, sgd): 固定單一學習率進行迭代  
 (2) Momentum: 迭代過程中，於 sgd 迭代公式中新增一速度項  
 (3) Adagrad: 隨著學習過程縮小學習率  
@@ -778,6 +778,74 @@ Reference :
 (1) [Optimizers](https://keras.io/optimizers/)   
 (2) [[機器學習ML NOTE]SGD, Momentum, AdaGrad, Adam Optimizer](https://medium.com/雞雞與兔兔的工程世界/機器學習ml-note-sgd-momentum-adagrad-adam-optimizer-f20568c968db)  
 (3) [Learning Rate Decay 技巧介紹](https://zhuanlan.zhihu.com/p/32923584)  
+
+ 
+#### Day_075: 反向傳播(Backpropagation)    
+
+ 
+#### Day_076: 優化器(Optimizers)  
+透過改善訓練方式，達到損失函數的最小化(或最大化)，而訓練出更佳的模型。  
+
+(1) 隨機梯度下降法(Stochastic Gradient Decent, SGD)  
+   
+    範例程式碼：  
+    SDG = optimizers.SGD( lr = , momentum = 0, nesterov = False, decay =  )  
+    model.compile( loss = , optimizer = SGD, metrics = [ 'accuracy' ] )
+    
+    # lr : 學習率  
+    # nesterov : 是否使用 Nesterov 動量(向量運算：三角形法) 
+    # decay : 更新參數後的學習率衰減值    
+      
+(2) Adagrad  
+  
+    範例程式碼：  
+    Adagrad = optimizers.Adagrad( lr = , epsilon = None, decay =  )   
+    model.compile( loss = , optimizer = Adagrad, metrics = [ 'accuracy' ] )
+    
+    # lr : 學習率   
+    # decay : 更新參數後的學習率衰減值    
+         
+(3) RMSprop  
+ 
+    範例程式碼：  
+    RMSprop = optimizers.RMSprop( lr = , epsilon = None, decay =  )  
+    model.compile( loss = , optimizer = RMSprop, metrics = [ 'accuracy' ] )
+    
+    # lr : 學習率   
+    # decay : 更新參數後的學習率衰減值 
+      
+(4) Adam  
+ 
+    範例程式碼：  
+    Adam = optimizers.Adam( lr = , epsilon = None, decay =  )  
+    model.compile( loss = , optimizer = Adam, metrics = [ 'accuracy' ] )
+    
+    # lr : 學習率   
+    # decay : 更新參數後的學習率衰減值 
+
+    
+#### Day_077: 過擬合(Overfitting)  
+訓練集的損失函數最小化的下降速度，遠比驗證集的損失函數來得快；驗證集的損失函數隨著訓練時間卻逐漸提升。
+
+
+#### Day_078: 訓練神經網絡模型的注意事項  
+   * Step 1: 資料是否已標準化  
+   * Step 2: 目標值是否已經過處理(例如：OneHot Encoding)  
+   * Step 3: 建構模型  
+   * Step 4: 超參數(Hyper-parameters)的調整  
+
+
+
+
+   
+
+
+
+
+
+
+
+
 
 
 
