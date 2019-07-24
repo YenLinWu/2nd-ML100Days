@@ -825,7 +825,11 @@ Reference :
 
     
 #### Day_077: 過擬合(Overfitting)  
-訓練集的損失函數最小化的下降速度，遠比驗證集的損失函數來得快；驗證集的損失函數隨著訓練時間卻逐漸提升。
+訓練集的損失函數最小化的下降速度，遠比驗證集的損失函數來得快；驗證集的損失函數隨著訓練時間卻逐漸提升。  
+  > 檢視方式：  
+    在模型訓練時，設定 fit 中的參數：   
+    validation_split = 0.9 驗證集的佔比 \ validation_data = ( x_valid, y_valid ) 指定驗證集      
+    shuffle: 每個 epoch 後，將訓練集資料隨機打亂再抽取驗證集。  
 
 
 #### Day_078: 訓練神經網絡模型的注意事項  
@@ -835,15 +839,26 @@ Reference :
    * Step 4: 超參數(Hyper-parameters)的調整  
 
 
+#### Day_079: 學習率(Learning Rate)  
+學習率過大時，每次參數改變過大，無法有效收斂至更低的損失函數值；  
+學習率過小時，可能導致 (i) 損失改變的幅度小、 (ii) 若於損失函數較平緩的區域，無法找到正確方向下降。  
 
 
-   
+#### Day_081: 正規化(Regularization)  
+目的：利用正規劃使模型的權重變較小，以減低模型輸出值(output)的變動對於輸入值(input)變動的敏感度。  
+Coss Function = Loss + L1-Regularization( or L2-Regularization )  
 
 
+#### Day_082: 隨機移除(Dropout)     
+隨機排除部分神經元，增加訓練難度，提升模型自身的泛化能力。
 
 
+#### Day_083: 批次標準化(Batch Normalization, BN)       
+對於每一層的輸入(或輸出)做標準化，可減輕梯度消失(Gradient Vanishing)或爆炸(Gradient Explode)的情況。    
+   * 註：此方法可取代正規化及隨機移除，且可設定較大的學習率。  
 
 
+#### Day_085: 提前終止(Early Stopping)   
 
 
 
