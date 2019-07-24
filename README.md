@@ -859,6 +859,38 @@ Coss Function = Loss + L1-Regularization( or L2-Regularization )
 
 
 #### Day_085: 提前終止(Early Stopping)   
+在訓練過程中，模型還沒產生過擬合(Overfitting)之前停止訓練，保留無過擬合的權重(Weights)。  
+   * 註1：提前終止並不會使模型得到更佳的結果，只避免更糟而已！
+   * 註2：Keras 中使用 Callbacks Function 達到提前終止的效果
+
+    範例程式碼：  
+    # Early Stopping
+    from keras.callbacks import EarlyStopping  
+    
+    EARLY_STOP = EarlyStopping( monitor = "val_loss", 
+                                patience = PATIENCE,  # 容忍訓練無再改善時的 EPOCHS 次數
+                                verbose = 1
+                                )  
+
+
+#### Day_086: 回呼函數(Callbacks Function)   
+Callbacks Function 可於訓練模型的過程中，進行監控儲存或介入調整模型。  
+使用 Model Check Point 隨時將訓練中的模型存下，可避免若不幸訓練意外中斷時須重新訓練，而從最近一次繼續重新開始。  
+
+
+#### Day_087: Reduce Learning Rate     
+隨著訓練更新次數，逐步減少學習率(Learning Rate)。  
+調降方法 :  
+(1) Schedule Decay: 在模型經過 n 次更新後，調降學習率；    
+(2) Reduce on Plateau: 當經過數個 Epoch 發現模型沒有更進步時，再調降學習率。    
+
+
+#### Day_088: 回呼函數(Callbacks Function)
+
+
+
+
+
 
 
 
