@@ -825,7 +825,11 @@ Reference :
 
     
 #### Day_077: 過擬合(Overfitting)  
-訓練集的損失函數最小化的下降速度，遠比驗證集的損失函數來得快；驗證集的損失函數隨著訓練時間卻逐漸提升。
+訓練集的損失函數最小化的下降速度，遠比驗證集的損失函數來得快；驗證集的損失函數隨著訓練時間卻逐漸提升。  
+  > 檢視方式：  
+    在模型訓練時，設定 fit 中的參數：   
+    validation_split = 0.9 驗證集的佔比 \ validation_data = ( x_valid, y_valid ) 指定驗證集      
+    shuffle: 每個 epoch 後，將訓練集資料隨機打亂再抽取驗證集。  
 
 
 #### Day_078: 訓練神經網絡模型的注意事項  
@@ -835,10 +839,53 @@ Reference :
    * Step 4: 超參數(Hyper-parameters)的調整  
 
 
+#### Day_079: 學習率(Learning Rate)  
+學習率過大時，每次參數改變過大，無法有效收斂至更低的損失函數值；  
+學習率過小時，可能導致 (i) 損失改變的幅度小、 (ii) 若於損失函數較平緩的區域，無法找到正確方向下降。  
 
 
-   
+#### Day_081: 正規化(Regularization)  
+目的：利用正規劃使模型的權重變較小，以減低模型輸出值(output)的變動對於輸入值(input)變動的敏感度。  
+Coss Function = Loss + L1-Regularization( or L2-Regularization )  
 
+
+#### Day_082: 隨機移除(Dropout)     
+隨機排除部分神經元，增加訓練難度，提升模型自身的泛化能力。
+
+
+#### Day_083: 批次標準化(Batch Normalization, BN)       
+對於每一層的輸入(或輸出)做標準化，可減輕梯度消失(Gradient Vanishing)或爆炸(Gradient Explode)的情況。    
+   * 註：此方法可取代正規化及隨機移除，且可設定較大的學習率。  
+
+
+#### Day_085: 提前終止(Early Stopping)   
+在訓練過程中，模型還沒產生過擬合(Overfitting)之前停止訓練，保留無過擬合的權重(Weights)。  
+   * 註1：提前終止並不會使模型得到更佳的結果，只避免更糟而已！
+   * 註2：Keras 中使用 Callbacks Function 達到提前終止的效果
+
+    範例程式碼：  
+    # Early Stopping
+    from keras.callbacks import EarlyStopping  
+    
+    EARLY_STOP = EarlyStopping( monitor = "val_loss", 
+                                patience = PATIENCE,  # 容忍訓練無再改善時的 EPOCHS 次數
+                                verbose = 1
+                                )  
+
+
+#### Day_086: 回呼函數(Callbacks Function)   
+Callbacks Function 可於訓練模型的過程中，進行監控儲存或介入調整模型。  
+使用 Model Check Point 隨時將訓練中的模型存下，可避免若不幸訓練意外中斷時須重新訓練，而從最近一次繼續重新開始。  
+
+
+#### Day_087: Reduce Learning Rate     
+隨著訓練更新次數，逐步減少學習率(Learning Rate)。  
+調降方法 :  
+(1) Schedule Decay: 在模型經過 n 次更新後，調降學習率；    
+(2) Reduce on Plateau: 當經過數個 Epoch 發現模型沒有更進步時，再調降學習率。    
+
+
+#### Day_088: 回呼函數(Callbacks Function)
 
 
 
