@@ -888,11 +888,10 @@ Callbacks Function 可於訓練模型的過程中，進行監控儲存或介入�
 #### Day_088: 回呼函數(Callbacks Function)
 
 
+#### Day_089: 客製損失函數(Custmoized Loss Function)
 
 
-
-
-
+#### Day_090 ~ Day_091: 傳統電腦視覺與影像辨識
 
 
 
