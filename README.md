@@ -894,7 +894,12 @@ Callbacks Function 可於訓練模型的過程中，進行監控儲存或介入�
 #### Day_090 ~ Day_091: 傳統電腦視覺與影像辨識  
 
 
-#### Day_092: 卷積神經網絡(Convolution Neural Network, CNN)   
+#### Day_092: 卷積神經網絡(Convolution Neural Network, CNN) - 簡介  
 
+
+#### Day_093: 卷積神經網絡(Convolution Neural Network, CNN) - 架構  
+
+
+#### Day_094: 卷積神經網絡(Convolution Neural Network, CNN) - 參數調整   
 
 
