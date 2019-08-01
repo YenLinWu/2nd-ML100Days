@@ -912,8 +912,8 @@ Callbacks Function 可於訓練模型的過程中，進行監控儲存或介入�
 (1) 卷積層(Convolution Layer): 利用 filter 從原始圖片中找出特徵，產出特徵圖(Feature Map)  
 (2) 池化層(Pooling Layer): 降低特徵圖(Feature Map)的維度且維持所篩選出的特徵  
    > 特徵圖的維度 = ( w1, h1, d1 )  
-   > Pooling filter 的維度 = 2； 移動的步數(strides) = 1  
-   > 降維後的維度 = ( (w1-f)/s + 1, (h1-f)/s + 1, d1 )
+   > 池化層： Pooling filter 的維度 = 2； 移動的步數(strides) = 1  
+   > 經過池化層降維後，特徵圖的維度 = ( (w1-f)/s + 1, (h1-f)/s + 1, d1 )
 
 
 
