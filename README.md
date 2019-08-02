@@ -856,6 +856,11 @@ Coss Function = Loss + L1-Regularization( or L2-Regularization )
 #### Day_083: 批次標準化(Batch Normalization, BN)       
 對於每一層的輸入(或輸出)做標準化，可減輕梯度消失(Gradient Vanishing)或爆炸(Gradient Explode)的情況。    
    * 註：此方法可取代正規化及隨機移除，且可設定較大的學習率。  
+  
+  
+Reference :   
+(1) [Batch Normalization](http://violin-tao.blogspot.com/2018/02/ml-batch-normalization.html)  
+(2) [Batch Normalization原理與實戰](https://zhuanlan.zhihu.com/p/34879333)   
 
 
 #### Day_085: 提前終止(Early Stopping)   
@@ -901,5 +906,26 @@ Callbacks Function 可於訓練模型的過程中，進行監控儲存或介入�
 
 
 #### Day_094: 卷積神經網絡(Convolution Neural Network, CNN) - 參數調整   
+  
+  
+#### Day_095: 卷積神經網絡(Convolution Neural Network, CNN) - 卷積層與池化層 
+(1) 卷積層(Convolution Layer): 利用 filter 從原始圖片中找出特徵，產出特徵圖(Feature Map)  
+(2) 池化層(Pooling Layer): 降低特徵圖(Feature Map)的維度且維持所篩選出的特徵  
+   > 特徵圖的維度 = ( w1, h1, d1 )  
+   > 池化層： Pooling filter 的維度 = 2； 移動的步數(strides) = 1  
+   > 經過池化層降維後，特徵圖的維度 = ( (w1-f)/s + 1, (h1-f)/s + 1, d1 )
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
