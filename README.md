@@ -916,6 +916,49 @@ Callbacks Function 可於訓練模型的過程中，進行監控儲存或介入�
    > 經過池化層降維後，特徵圖的維度 = ( (w1-f)/s + 1, (h1-f)/s + 1, d1 )
 
 
+#### Day_096: 卷積神經網絡(Convolution Neural Network, CNN) - 卷積層
+  
+   * Conv2D :  
+    
+    程式碼：  
+    from keras.layers import Conv2D, SeparableConv2D, Input
+    
+    Conv2D( filters = ,                     # filter( 又稱 kernel ) 的個數  
+            kernel_size = ( , ),            # filter( 又稱 kernel ) 的個尺寸
+            padding = 'same',               # padding : 邊界周圍補 0 且 filter 的步伐(stride) 為 1   
+            strides = ,                     # filter 移動的步伐( 若 padding = 'same' 則不用設定 strides ) 
+            input_shape =                   
+            )
+
+   * SeparableConv2D :  
+     Depthwise Separable Convolution 的效果與 Conv2D 類似，但參數量可大幅減少，減輕運算時對硬體的需求。  
+     (i) Depthwise Convolution(深度/空間卷積)：對影像的各個通道(channel)分別獨立做卷積  
+     (ii)Pointwise Convolution(逐點卷積)：使用尺寸 1 x 1 的 filter 做卷積，將深度/空間卷積的結果混合。  
+     
+    程式碼：  
+    from keras.layers import Conv2D, SeparableConv2D, Input
+    
+    SeparableConv2D( filters = ,             # filter( 又稱 kernel ) 的個數  
+                     kernel_size = ( , ),    # filter( 又稱 kernel ) 的個尺寸
+                     padding = 'same',       # padding : 邊界周圍補 0 且 filter 的步伐(stride) 為 1   
+                     strides = ,             # filter 移動的步伐( 若 padding = 'same' 則不用設定 strides ) 
+                     depth_multiplier = 1,   # 在深度/空間卷積的步驟中，每個輸入通道使用多少個輸出通道   
+                                             # 預設為 1，參考文章及每日學習資料的圖例，即為預設值 1 的展示                    
+                     input_shape =                   
+                     )  
+  
+  
+Reference :   
+(1) [深度學習 - MobileNet(Depthwise Separable Convolution)](https://medium.com/@chih.sheng.huang821/深度學習-mobilenet-depthwise-separable-convolution-f1ed016b3467)  
+(2) [A Basic Introduction to Separable Convolutions](https://towardsdatascience.com/a-basic-introduction-to-separable-convolutions-b99ec3102728)   
+(3) [ SeparableConv2D 程式碼參數說明](https://keras-cn.readthedocs.io/en/latest/layers/convolutional_layer/)
+
+
+#### Day_098: 訓練 CNN 的細節與技巧 - 處理大量數據  
+
+ 
+
+
 
 
 
