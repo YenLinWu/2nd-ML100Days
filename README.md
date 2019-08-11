@@ -954,8 +954,28 @@ Reference :
 (3) [ SeparableConv2D 程式碼參數說明](https://keras-cn.readthedocs.io/en/latest/layers/convolutional_layer/)
 
 
-#### Day_098: 訓練 CNN 的細節與技巧 - 處理大量數據  
+#### Day_098: 訓練 CNN 的細節與技巧 - 處理大量數據    
+當資料量太大無法一次讀進記憶體時，可使用 generator 進行批次讀取。
 
+    程式碼：  
+    # 定義批次資料的抽取方式
+    def BS_Generator( x, y, batch_size ) :
+      while True :
+        for index in range( 0, len( x ), batch_size ) : 
+            ''' 
+            index 從 0 開始，每次餵入模型的資料量為 batch_size 筆。  
+            假設 batch_size = 64, 則第一批次餵入第 0 ~ 63 筆資料、第二批次餵入第 64 ~ 127 筆資料、....  
+            '''
+            batch_x, batch_y = x[ index : index + batch_size ], y[ index : index + batch_size ]
+            yield batch_x, batch_y
+        x, y = shuffle( x, y )  # loop 結束後，將資料順序打亂再重新循環     
+     
+     Batch_Size =         # 設定批次資料數量
+     Train_Generator = BS_Generator( x_train, y_train, Batch_Size )   # 建立批次的資料
+
+
+#### Day_099: 訓練 CNN 的細節與技巧 - 處理小量數據    
+當資料量太大無法一次讀進記憶體時，可使用 generator 進行批次讀取。    
  
 
 
